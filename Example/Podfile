@@ -1,0 +1,6 @@
+use_frameworks!
+target 'TinyCborObjc_Tests' do
+  pod 'TinyCborObjc', :path => '../'
+  
+  
+end
