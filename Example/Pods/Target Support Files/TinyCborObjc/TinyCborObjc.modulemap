@@ -1,0 +1,6 @@
+framework module TinyCborObjc {
+  umbrella header "TinyCborObjc-umbrella.h"
+
+  export *
+  module * { export * }
+}

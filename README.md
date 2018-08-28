@@ -1,15 +1,31 @@
 # TinyCborObjc
 
-[![CI Status](https://img.shields.io/travis/Andrew Podkovyrin/TinyCborObjc.svg?style=flat)](https://travis-ci.org/Andrew Podkovyrin/TinyCborObjc)
+[![CI Status](https://img.shields.io/travis/dashevo/TinyCborObjc.svg?style=flat)](https://travis-ci.org/dashevo/TinyCborObjc)
 [![Version](https://img.shields.io/cocoapods/v/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 [![License](https://img.shields.io/cocoapods/l/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 [![Platform](https://img.shields.io/cocoapods/p/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 
-## Example
+TinyCborObjc allows encoding Foundation-objects into CBOR representation.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Supported types:
+- `NSDictionary`
+- `NSArray`
+- `NSString`
+- `NSNumber`
+- `NSNull`
 
-## Requirements
+## Usage
+
+``` objective-c
+#import <TinyCborObjc/NSObject+DSCborEncoding.h>
+
+NSDictionary *dictionary = ...;
+NSData *cborData = [dictionary ds_cborEncodedObject];
+```
+
+## Dependencies
+
+Build on top of [tinycbor](https://github.com/intel/tinycbor) library (integrated as pod dependency).
 
 ## Installation
 

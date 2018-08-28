@@ -1,0 +1,6 @@
+framework module tinycbor {
+  umbrella header "tinycbor-umbrella.h"
+
+  export *
+  module * { export * }
+}

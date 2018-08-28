@@ -1,0 +1,23 @@
+PODS:
+  - tinycbor (0.5.2)
+  - TinyCborObjc (0.1.0):
+    - tinycbor (= 0.5.2)
+
+DEPENDENCIES:
+  - TinyCborObjc (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - tinycbor
+
+EXTERNAL SOURCES:
+  TinyCborObjc:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  tinycbor: f85efe0276ea8d90a3367c010630105853ca2d20
+  TinyCborObjc: 320f8d2c2640def5d1f3989fc9fd186415e5f88b
+
+PODFILE CHECKSUM: f56f23624321c616127042118d14558b0d2d2315
+
+COCOAPODS: 1.5.3
