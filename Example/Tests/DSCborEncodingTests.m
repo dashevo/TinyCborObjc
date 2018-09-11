@@ -28,22 +28,6 @@ data; \
 #define DSFLOAT(A) [NSNumber numberWithFloat:A]
 #define DSDOUBLE(A) [NSNumber numberWithDouble:A]
 
-// for debugging purposes
-__unused static NSString *HEXStringFromCbor(NSData *data) {
-    if (!data) {
-        return [NSString string];
-    }
-    
-    const uint8_t *buffer = data.bytes;
-    NSUInteger length = data.length;
-    NSMutableString *hexString  = [NSMutableString stringWithCapacity:length * 2];
-    for (NSUInteger i = 0; i < length; ++i) {
-        [hexString appendFormat:@"%02lx", (unsigned long)buffer[i]];
-    }
-    
-    return [NSString stringWithString:hexString];
-}
-
 @interface DSCborEncodingTests : XCTestCase
 
 @end
@@ -136,15 +120,13 @@ __unused static NSString *HEXStringFromCbor(NSData *data) {
 - (void)testEncodeDictionaries {
     XCTAssertEqualObjects([@{} ds_cborEncodedObject], DATABYTES(0xa0));
     
-    NSDictionary *d = @{ @1: @2, @3: @4 };
+    NSDictionary *d = @{ @"x": @2, @"y": @4 };
     NSData *encoded = [d ds_cborEncodedObject];
-    XCTAssert([encoded isEqualToData:DATABYTES(0xa2, 0x01, 0x02, 0x03, 0x04)] ||
-              [encoded isEqualToData:DATABYTES(0xa2, 0x03, 0x04, 0x01, 0x02)]);
+    XCTAssert([encoded isEqualToData:DATABYTES(0xa2, 0x61, 0x78, 0x02, 0x61, 0x79, 0x04)]);
     
     d = @{ @"a": @[ @1 ], @"b": @[ @2, @3 ] };
     encoded = [d ds_cborEncodedObject];
-    XCTAssert([encoded isEqualToData:DATABYTES(0xa2, 0x61, 0x61, 0x81, 0x01, 0x61, 0x62, 0x82, 0x02, 0x03)] ||
-              [encoded isEqualToData:DATABYTES(0xa2, 0x61, 0x62, 0x82, 0x02, 0x03, 0x61, 0x61, 0x81, 0x01)]);
+    XCTAssert([encoded isEqualToData:DATABYTES(0xa2, 0x61, 0x61, 0x81, 0x01, 0x61, 0x62, 0x82, 0x02, 0x03)]);
 }
 
 @end
