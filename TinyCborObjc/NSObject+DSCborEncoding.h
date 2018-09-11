@@ -21,6 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 extern NSString * const DSCborEncodingTinyCborErrorDomain;
 
+@interface NSData (DSCborEncodingHelper)
+
+
+/**
+ HEX string representation of NSData object
+ */
+- (NSString *)ds_hexStringFromData;
+
+@end
+
 @interface NSObject (DSCborEncoding)
 
 /**

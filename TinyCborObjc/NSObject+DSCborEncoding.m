@@ -25,6 +25,21 @@ NSString * const DSCborEncodingTinyCborErrorDomain = @"DSCborEncodingTinyCborErr
 
 static size_t const DSCborEncodingBufferChunkSize = 1024;
 
+@implementation NSData (DSCborEncodingHelper)
+
+- (NSString *)ds_hexStringFromData {
+    const uint8_t *buffer = self.bytes;
+    NSUInteger length = self.length;
+    NSMutableString *hexString  = [NSMutableString stringWithCapacity:length * 2];
+    for (NSUInteger i = 0; i < length; ++i) {
+        [hexString appendFormat:@"%02lx", (unsigned long)buffer[i]];
+    }
+    
+    return [NSString stringWithString:hexString];
+}
+
+@end
+
 @implementation NSObject (DSCborEncoding)
 
 - (nullable NSData *)ds_cborEncodedObject {
@@ -154,7 +169,24 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         if (err != CborNoError) {
             return err;
         }
-        for (id key in dictionaryObject) {
+        NSMutableArray *sortedKeys = [dictionaryObject.allKeys mutableCopy];
+        [sortedKeys sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            NSString *obj1String = (NSString *)obj1;
+            NSString *obj2String = (NSString *)obj2;
+            NSData *data1 = [obj1String dataUsingEncoding:NSUTF8StringEncoding];
+            NSData *data2 = [obj2String dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *hexString1 = [data1 ds_hexStringFromData];
+            NSString *hexString2 = [data2 ds_hexStringFromData];
+            if (obj1String.length < obj2String.length) {
+                return NSOrderedAscending;
+            }
+            else if (obj1String.length > obj2String.length) {
+                return NSOrderedDescending;
+            }
+            NSComparisonResult result = [hexString1 compare:hexString2];
+            return result;
+        }];
+        for (id key in sortedKeys) {
             err = [self ds_encodeObject:key intoBuffer:buffer bufferSize:bufferSize encoder:&container];
             if (err != CborNoError) {
                 return err;
