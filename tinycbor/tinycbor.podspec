@@ -6,7 +6,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tinycbor'
-  s.version          = '0.5.2'
+  s.version          = '0.5.3-alpha1'
   s.summary          = 'Concise Binary Object Representation (CBOR) Library'
   s.description      = <<-DESC
 The TinyCBOR library is a small CBOR encoder and decoder library, optimized for very fast operation with very small footprint. The main encoder and decoder functions do not allocate memory.
@@ -31,7 +31,10 @@ Converting CBOR to JSON
 
   s.pod_target_xcconfig = {
     'CLANG_WARN_DOCUMENTATION_COMMENTS' => 'NO',
-    'CLANG_WARN_UNREACHABLE_CODE' => 'NO'
+    'CLANG_WARN_UNREACHABLE_CODE' => 'NO',
+    'GCC_WARN_UNINITIALIZED_AUTOS' => 'NO',
+    'GCC_WARN_64_TO_32_BIT_CONVERSION' => 'NO',
+    'GCC_WARN_INHIBIT_ALL_WARNINGS' => 'YES'
   }
 
 end
