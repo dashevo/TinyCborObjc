@@ -1,7 +1,7 @@
 PODS:
-  - tinycbor (0.5.2)
-  - TinyCborObjc (0.1.0):
-    - tinycbor (= 0.5.2)
+  - tinycbor (0.5.3-alpha1)
+  - TinyCborObjc (0.2.0):
+    - tinycbor (= 0.5.3-alpha1)
 
 DEPENDENCIES:
   - TinyCborObjc (from `../`)
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  tinycbor: f85efe0276ea8d90a3367c010630105853ca2d20
-  TinyCborObjc: 320f8d2c2640def5d1f3989fc9fd186415e5f88b
+  tinycbor: 81999417a2c8ee8c4a7651738a11ad0711c82935
+  TinyCborObjc: 4015bc81d0a5fa24db19d04325f745bdb425c037
 
-PODFILE CHECKSUM: f56f23624321c616127042118d14558b0d2d2315
+PODFILE CHECKSUM: 7906639d06b25ad7670577bdf80c3239ba2a72a5
 
 COCOAPODS: 1.5.3
