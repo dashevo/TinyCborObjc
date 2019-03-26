@@ -6,7 +6,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tinycbor'
-  s.version          = '0.5.3-alpha1'
+  s.version          = '0.5.3-alpha2'
   s.summary          = 'Concise Binary Object Representation (CBOR) Library'
   s.description      = <<-DESC
 The TinyCBOR library is a small CBOR encoder and decoder library, optimized for very fast operation with very small footprint. The main encoder and decoder functions do not allocate memory.
@@ -23,7 +23,7 @@ Converting CBOR to JSON
   s.homepage         = 'https://github.com/intel/tinycbor/'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Intel Corporation' => 'webmaster@linux.intel.com' }
-  s.source           = { :git => 'https://github.com/intel/tinycbor.git', :commit => '3642f49d62348bcdb1b3320bb55332cddd54158b' }
+  s.source           = { :git => 'https://github.com/intel/tinycbor.git', :commit => 'd94ca09aa91f5b3c581527aa8bca179a82b79874' }
 
   s.ios.deployment_target = '9.0'
 
