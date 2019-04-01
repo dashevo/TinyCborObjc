@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03C1C3ECC08A0AEF1544E75F4D986F77 /* TinyCborObjc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E062C3DE9B4C6719424D9248AD3F7907 /* TinyCborObjc-dummy.m */; };
 		0B98F0ACA493F5A44DBE299DDCBF29C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5FB13BC77DD600213133553367F5D2 /* Foundation.framework */; };
 		0BD26DBB64481ABB6A45418B16239A3E /* cborparser_dup_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 215FCF1A804699E402ECC8ACA34D43B2 /* cborparser_dup_string.c */; };
+		0F4C94438E36B86C18592DBEFF2729B7 /* NSObject+DSCborEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FDE0155F1CC8E2EEB851ABFB3863E2 /* NSObject+DSCborEncoding.m */; };
 		111CE8037EDE2686EA9298C21434A8D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5FB13BC77DD600213133553367F5D2 /* Foundation.framework */; };
 		156105AAD3241C9FABBEBB4F7F7C96B8 /* cborpretty.c in Sources */ = {isa = PBXBuildFile; fileRef = 9B3A0C39C6F402162AC247974AF5D8F1 /* cborpretty.c */; };
 		194193588C01B084A530E43D939990A4 /* compilersupport_p.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F7A287B8A022C7A574E457452365086 /* compilersupport_p.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,19 +17,21 @@
 		4409657D85513700C4332B4712FC4F6F /* cborencoder_close_container_checked.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B3AF60669705F872C3AAC48A7634761 /* cborencoder_close_container_checked.c */; };
 		4E61A46085A1302305DE7388943B50A2 /* cbor.h in Headers */ = {isa = PBXBuildFile; fileRef = AFE773C9ACE36BC4ABFC78E6954D99E0 /* cbor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50698CF04B89A4DC5E31903437C7AAC1 /* cborinternal_p.h in Headers */ = {isa = PBXBuildFile; fileRef = 9FB80BEB6CA8D4D5F4260536F5D930B7 /* cborinternal_p.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6364FDFD6D81979D0ACD24B1E4AA71D1 /* TinyCborObjc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7213F100865452EAD4C1747B1ACC03D2 /* TinyCborObjc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		72D61987507CBDDBB93B34F5D0A32E50 /* NSObject+DSCborEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EA72FB6C07B816EC2D8756041E9C520 /* NSObject+DSCborEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7D1C76873402285D5222F08793B10102 /* TinyCborObjc-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C01CC252D2773D23C5B50B94A381EC5 /* TinyCborObjc-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F5699C5C1F37E1E961BB0EF07E1BD0F /* cborencoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9EE9A2188DCDF3F84D075044040E6 /* cborencoder.c */; };
 		802349A4775A6C91B0150A35DCF6AFB9 /* tinycbor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D8618EEABB5DD2893978F33CEA8385E /* tinycbor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		886617B512AACE3AE242FAA56F449C03 /* NSObject+DSCborEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 03F1BC6EAE51570F4AFC48C34E984030 /* NSObject+DSCborEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		897C91E1C224ED57F0AE6F8E73FCA4C6 /* cborparser.c in Sources */ = {isa = PBXBuildFile; fileRef = 8259F8A6FFAB6CA70F835608EC9B8DE3 /* cborparser.c */; };
 		91722FD0637F0E3C33FE7C228AFE3679 /* tinycbor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857B560F50800FC218229404D9DFF6DF /* tinycbor.framework */; };
+		94C6778AE10DFAB97FB2B10344E2769E /* NSData+DSCborDecoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C92B915FA0DC3FFF9BD8B37E52BD659 /* NSData+DSCborDecoding.m */; };
 		9AD461AC94787D28140C95BE05D7263D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC5FB13BC77DD600213133553367F5D2 /* Foundation.framework */; };
 		A4922E4F53930AB6E2241CD715D92EA2 /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = F6C2D4D591AFD1DBBDC575E4ECB78FE6 /* open_memstream.c */; };
+		A50DE8CB743A230F700E8A7A8EB359DF /* NSData+DSCborDecoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 812BD55D89182A6CB4C250D00350C67A /* NSData+DSCborDecoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B416C07A446D43E09D24424BA1626581 /* TinyCborObjc-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 592E2654883578BACBE921B2362C1F7B /* TinyCborObjc-dummy.m */; };
 		C2D7661D370FE5CE5ED2622396DFE929 /* cborerrorstrings.c in Sources */ = {isa = PBXBuildFile; fileRef = B29F9836538C966F680C28E980BBB32B /* cborerrorstrings.c */; };
 		C7C61016DF33303BDDAA7FFE4222748A /* Pods-TinyCborObjc_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D688A04AEFD60F2F3DAC6BEFF2EE2B1D /* Pods-TinyCborObjc_Tests-dummy.m */; };
 		C8B5E8CC2256DDA185A0DA73B651EDA1 /* tinycbor-version.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C2C0252A75854003FA511F2253FF1E /* tinycbor-version.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC7694D662B9779A7F5F518691A494F9 /* Pods-TinyCborObjc_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E387DBF1F1F19E68DBCEEF545264ABD1 /* Pods-TinyCborObjc_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CD027FCB8D38ABF60DA1FE17B40C2EFC /* NSObject+DSCborEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABF594A41402980E95C3A03F454B85A /* NSObject+DSCborEncoding.m */; };
 		E06B49A8F4D346619D8753AFF802CB08 /* tinycbor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62ACD4850B026F2D569CD219A627D50D /* tinycbor-dummy.m */; };
 		E0F1FB2857AFFA14B50433FB2BB50654 /* cborpretty_stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 3CDA2FA0D5B00A85C20F044214E1E927 /* cborpretty_stdio.c */; };
 		E71B5B2C46C7920363C9F98BA7BFB49F /* utf8_p.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F96BBC365FB921B5B327C34DA3928ED /* utf8_p.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -62,53 +64,55 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00D24BB7FD99D14B5BAD907D09558A06 /* cbortojson.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cbortojson.c; path = src/cbortojson.c; sourceTree = "<group>"; };
+		00D24BB7FD99D14B5BAD907D09558A06 /* cbortojson.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cbortojson.c; path = src/cbortojson.c; sourceTree = "<group>"; };
+		03F1BC6EAE51570F4AFC48C34E984030 /* NSObject+DSCborEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+DSCborEncoding.h"; path = "TinyCborObjc/NSObject+DSCborEncoding.h"; sourceTree = "<group>"; };
 		087FE6BF3E5B310C8BA0D51A64856170 /* cborjson.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cborjson.h; path = src/cborjson.h; sourceTree = "<group>"; };
 		10C2C0252A75854003FA511F2253FF1E /* tinycbor-version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "tinycbor-version.h"; path = "src/tinycbor-version.h"; sourceTree = "<group>"; };
-		148F98B387344CD857FADB295B978090 /* cborvalidation.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborvalidation.c; path = src/cborvalidation.c; sourceTree = "<group>"; };
-		159E9D91131D71338CE8C649E3BE5579 /* Pods_TinyCborObjc_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinyCborObjc_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19A33FF4428F8E540DDAA89E3B11F04F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		20AF3B611ED4D4F4D29C9425AFC59BC2 /* TinyCborObjc-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TinyCborObjc-Info.plist"; sourceTree = "<group>"; };
-		215FCF1A804699E402ECC8ACA34D43B2 /* cborparser_dup_string.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborparser_dup_string.c; path = src/cborparser_dup_string.c; sourceTree = "<group>"; };
-		24F91C989EED33295622404B4BA6432D /* TinyCborObjc-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyCborObjc-prefix.pch"; sourceTree = "<group>"; };
-		27CC9C422299E0412A3646972DB55412 /* TinyCborObjc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TinyCborObjc.xcconfig; sourceTree = "<group>"; };
+		148F98B387344CD857FADB295B978090 /* cborvalidation.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborvalidation.c; path = src/cborvalidation.c; sourceTree = "<group>"; };
+		159E9D91131D71338CE8C649E3BE5579 /* Pods_TinyCborObjc_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TinyCborObjc_Tests.framework; path = "Pods-TinyCborObjc_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		215FCF1A804699E402ECC8ACA34D43B2 /* cborparser_dup_string.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborparser_dup_string.c; path = src/cborparser_dup_string.c; sourceTree = "<group>"; };
 		28CF66D7F0EE6041A8896859C2AE7B99 /* Pods-TinyCborObjc_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TinyCborObjc_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		2CC1C1F7581931D2CA3191C39FD79C4D /* TinyCborObjc-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyCborObjc-prefix.pch"; sourceTree = "<group>"; };
 		302791BCEC1CCF720A9ADB8E9CD139D6 /* tinycbor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "tinycbor-Info.plist"; sourceTree = "<group>"; };
-		3CDA2FA0D5B00A85C20F044214E1E927 /* cborpretty_stdio.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborpretty_stdio.c; path = src/cborpretty_stdio.c; sourceTree = "<group>"; };
+		3CDA2FA0D5B00A85C20F044214E1E927 /* cborpretty_stdio.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborpretty_stdio.c; path = src/cborpretty_stdio.c; sourceTree = "<group>"; };
 		3F7A287B8A022C7A574E457452365086 /* compilersupport_p.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = compilersupport_p.h; path = src/compilersupport_p.h; sourceTree = "<group>"; };
 		3F7E7FBD9BF77D11D4E7DB8C13EE4F7F /* Pods-TinyCborObjc_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TinyCborObjc_Tests-Info.plist"; sourceTree = "<group>"; };
-		54B1CE364AA9B92285E6C388DC153FD2 /* TinyCborObjc.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = TinyCborObjc.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		51FDE0155F1CC8E2EEB851ABFB3863E2 /* NSObject+DSCborEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DSCborEncoding.m"; path = "TinyCborObjc/NSObject+DSCborEncoding.m"; sourceTree = "<group>"; };
 		58C23D6896D49534D37D8A9BB38ED81D /* Pods-TinyCborObjc_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TinyCborObjc_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		592E2654883578BACBE921B2362C1F7B /* TinyCborObjc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TinyCborObjc-dummy.m"; sourceTree = "<group>"; };
 		62ACD4850B026F2D569CD219A627D50D /* tinycbor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "tinycbor-dummy.m"; sourceTree = "<group>"; };
 		6DC1571ABB56F91041BF7E65ABCB2544 /* Pods-TinyCborObjc_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TinyCborObjc_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6EA72FB6C07B816EC2D8756041E9C520 /* NSObject+DSCborEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+DSCborEncoding.h"; path = "TinyCborObjc/NSObject+DSCborEncoding.h"; sourceTree = "<group>"; };
 		71A84C84023BE9768976F6EA102BA3D5 /* tinycbor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = tinycbor.xcconfig; sourceTree = "<group>"; };
-		7213F100865452EAD4C1747B1ACC03D2 /* TinyCborObjc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyCborObjc-umbrella.h"; sourceTree = "<group>"; };
-		7AF9EE9A2188DCDF3F84D075044040E6 /* cborencoder.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborencoder.c; path = src/cborencoder.c; sourceTree = "<group>"; };
-		7B3AF60669705F872C3AAC48A7634761 /* cborencoder_close_container_checked.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborencoder_close_container_checked.c; path = src/cborencoder_close_container_checked.c; sourceTree = "<group>"; };
-		8259F8A6FFAB6CA70F835608EC9B8DE3 /* cborparser.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborparser.c; path = src/cborparser.c; sourceTree = "<group>"; };
+		7AF9EE9A2188DCDF3F84D075044040E6 /* cborencoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborencoder.c; path = src/cborencoder.c; sourceTree = "<group>"; };
+		7B3AF60669705F872C3AAC48A7634761 /* cborencoder_close_container_checked.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborencoder_close_container_checked.c; path = src/cborencoder_close_container_checked.c; sourceTree = "<group>"; };
+		80A4FDA27B7C67E555427BB15A9B406B /* TinyCborObjc-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TinyCborObjc-Info.plist"; sourceTree = "<group>"; };
+		812BD55D89182A6CB4C250D00350C67A /* NSData+DSCborDecoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+DSCborDecoding.h"; path = "TinyCborObjc/NSData+DSCborDecoding.h"; sourceTree = "<group>"; };
+		8259F8A6FFAB6CA70F835608EC9B8DE3 /* cborparser.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborparser.c; path = src/cborparser.c; sourceTree = "<group>"; };
 		857B560F50800FC218229404D9DFF6DF /* tinycbor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinycbor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F68D6704D8C61D300850221AA7DD9E8 /* tinycbor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tinycbor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9ABF594A41402980E95C3A03F454B85A /* NSObject+DSCborEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+DSCborEncoding.m"; path = "TinyCborObjc/NSObject+DSCborEncoding.m"; sourceTree = "<group>"; };
-		9B3A0C39C6F402162AC247974AF5D8F1 /* cborpretty.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborpretty.c; path = src/cborpretty.c; sourceTree = "<group>"; };
+		8C01CC252D2773D23C5B50B94A381EC5 /* TinyCborObjc-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TinyCborObjc-umbrella.h"; sourceTree = "<group>"; };
+		8C92B915FA0DC3FFF9BD8B37E52BD659 /* NSData+DSCborDecoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+DSCborDecoding.m"; path = "TinyCborObjc/NSData+DSCborDecoding.m"; sourceTree = "<group>"; };
+		8F68D6704D8C61D300850221AA7DD9E8 /* tinycbor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = tinycbor.framework; path = tinycbor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B3A0C39C6F402162AC247974AF5D8F1 /* cborpretty.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborpretty.c; path = src/cborpretty.c; sourceTree = "<group>"; };
 		9D8618EEABB5DD2893978F33CEA8385E /* tinycbor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tinycbor-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F96BBC365FB921B5B327C34DA3928ED /* utf8_p.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = utf8_p.h; path = src/utf8_p.h; sourceTree = "<group>"; };
 		9FB80BEB6CA8D4D5F4260536F5D930B7 /* cborinternal_p.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cborinternal_p.h; path = src/cborinternal_p.h; sourceTree = "<group>"; };
+		9FF846B33231C8B8F6C1CEECD782256F /* TinyCborObjc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TinyCborObjc.modulemap; sourceTree = "<group>"; };
+		A5F42639EECAE651AC18D778E645C0C4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		A8F9BD59B7FD31C13F4881AB5357B4F0 /* tinycbor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "tinycbor-prefix.pch"; sourceTree = "<group>"; };
+		AD881ED72C1CE46A7734D95A8589DBF3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		AFE773C9ACE36BC4ABFC78E6954D99E0 /* cbor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = cbor.h; path = src/cbor.h; sourceTree = "<group>"; };
-		B29F9836538C966F680C28E980BBB32B /* cborerrorstrings.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = cborerrorstrings.c; path = src/cborerrorstrings.c; sourceTree = "<group>"; };
+		B29F9836538C966F680C28E980BBB32B /* cborerrorstrings.c */ = {isa = PBXFileReference; includeInIndex = 1; name = cborerrorstrings.c; path = src/cborerrorstrings.c; sourceTree = "<group>"; };
 		B2FFA58076592A0FB7B910B52B1B20AB /* Pods-TinyCborObjc_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TinyCborObjc_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9780D161AACBCF4652D2ECF77DCA218 /* tinycbor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = tinycbor.modulemap; sourceTree = "<group>"; };
-		CBD442FC6C0ED58FF63A54B68AC3D95F /* TinyCborObjc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinyCborObjc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3EB9C95104F876398763E79FC32AB80 /* TinyCborObjc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TinyCborObjc.xcconfig; sourceTree = "<group>"; };
+		CBD442FC6C0ED58FF63A54B68AC3D95F /* TinyCborObjc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TinyCborObjc.framework; path = TinyCborObjc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5FB13BC77DD600213133553367F5D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D688A04AEFD60F2F3DAC6BEFF2EE2B1D /* Pods-TinyCborObjc_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TinyCborObjc_Tests-dummy.m"; sourceTree = "<group>"; };
-		D8F44CDDD547E33FE48F630E8B4EBE60 /* TinyCborObjc.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TinyCborObjc.modulemap; sourceTree = "<group>"; };
 		DEBB043641880CC00F841D41A9983B43 /* Pods-TinyCborObjc_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TinyCborObjc_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E062C3DE9B4C6719424D9248AD3F7907 /* TinyCborObjc-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TinyCborObjc-dummy.m"; sourceTree = "<group>"; };
-		E2B96BB3200BA95F8336067305C1B9B7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E387DBF1F1F19E68DBCEEF545264ABD1 /* Pods-TinyCborObjc_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TinyCborObjc_Tests-umbrella.h"; sourceTree = "<group>"; };
-		F6C2D4D591AFD1DBBDC575E4ECB78FE6 /* open_memstream.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = open_memstream.c; path = src/open_memstream.c; sourceTree = "<group>"; };
+		F6C2D4D591AFD1DBBDC575E4ECB78FE6 /* open_memstream.c */ = {isa = PBXFileReference; includeInIndex = 1; name = open_memstream.c; path = src/open_memstream.c; sourceTree = "<group>"; };
+		F6FA2B94446C4500A3584002EBDD708D /* TinyCborObjc.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = TinyCborObjc.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F7190F6A77DBEA5824FD16D11878BAB8 /* Pods-TinyCborObjc_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TinyCborObjc_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,7 @@
 				9F96BBC365FB921B5B327C34DA3928ED /* utf8_p.h */,
 				A6A3FCD4CC41B95D2DCA2A3AFB640DDE /* Support Files */,
 			);
+			name = tinycbor;
 			path = tinycbor;
 			sourceTree = "<group>";
 		};
@@ -192,24 +197,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A1991D160D34566C1EA4687732A36FF /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				E2B96BB3200BA95F8336067305C1B9B7 /* LICENSE */,
-				19A33FF4428F8E540DDAA89E3B11F04F /* README.md */,
-				54B1CE364AA9B92285E6C388DC153FD2 /* TinyCborObjc.podspec */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		45BE0ED53FFC96D02AA86A03BD48DBAF /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E52D787E7573313F6809995E371F4BDB /* TinyCborObjc */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		470D70CAC50C62C0A36E71724EE6DB10 /* Pods-TinyCborObjc_Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,26 +214,34 @@
 			path = "Target Support Files/Pods-TinyCborObjc_Tests";
 			sourceTree = "<group>";
 		};
-		5EDD2D4FFF13F5DDD9B5723C8F74427A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D8F44CDDD547E33FE48F630E8B4EBE60 /* TinyCborObjc.modulemap */,
-				27CC9C422299E0412A3646972DB55412 /* TinyCborObjc.xcconfig */,
-				E062C3DE9B4C6719424D9248AD3F7907 /* TinyCborObjc-dummy.m */,
-				20AF3B611ED4D4F4D29C9425AFC59BC2 /* TinyCborObjc-Info.plist */,
-				24F91C989EED33295622404B4BA6432D /* TinyCborObjc-prefix.pch */,
-				7213F100865452EAD4C1747B1ACC03D2 /* TinyCborObjc-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/TinyCborObjc";
-			sourceTree = "<group>";
-		};
 		8409BE90406F93EDD9B15230F76DDCA6 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				470D70CAC50C62C0A36E71724EE6DB10 /* Pods-TinyCborObjc_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9C392E765A0654E969A58F91D68712CB /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFB0AC4C0F3DF3594A8C383B003165D4 /* TinyCborObjc */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		A699D6B14D61C357E40DB0FFE3E48F7B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9FF846B33231C8B8F6C1CEECD782256F /* TinyCborObjc.modulemap */,
+				C3EB9C95104F876398763E79FC32AB80 /* TinyCborObjc.xcconfig */,
+				592E2654883578BACBE921B2362C1F7B /* TinyCborObjc-dummy.m */,
+				80A4FDA27B7C67E555427BB15A9B406B /* TinyCborObjc-Info.plist */,
+				2CC1C1F7581931D2CA3191C39FD79C4D /* TinyCborObjc-prefix.pch */,
+				8C01CC252D2773D23C5B50B94A381EC5 /* TinyCborObjc-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/TinyCborObjc";
 			sourceTree = "<group>";
 		};
 		A6A3FCD4CC41B95D2DCA2A3AFB640DDE /* Support Files */ = {
@@ -267,7 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				45BE0ED53FFC96D02AA86A03BD48DBAF /* Development Pods */,
+				9C392E765A0654E969A58F91D68712CB /* Development Pods */,
 				33A9D8C2DA5AF79D659386AEA479433D /* Frameworks */,
 				0ADCCF4565A81AA5709E4401584B386B /* Pods */,
 				16D0A943B38844EF5B41D13EBECFFDAD /* Products */,
@@ -275,13 +270,25 @@
 			);
 			sourceTree = "<group>";
 		};
-		E52D787E7573313F6809995E371F4BDB /* TinyCborObjc */ = {
+		E06CF4F7DA83D2CDE7C7E2F7697A46D2 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				6EA72FB6C07B816EC2D8756041E9C520 /* NSObject+DSCborEncoding.h */,
-				9ABF594A41402980E95C3A03F454B85A /* NSObject+DSCborEncoding.m */,
-				3A1991D160D34566C1EA4687732A36FF /* Pod */,
-				5EDD2D4FFF13F5DDD9B5723C8F74427A /* Support Files */,
+				AD881ED72C1CE46A7734D95A8589DBF3 /* LICENSE */,
+				A5F42639EECAE651AC18D778E645C0C4 /* README.md */,
+				F6FA2B94446C4500A3584002EBDD708D /* TinyCborObjc.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		EFB0AC4C0F3DF3594A8C383B003165D4 /* TinyCborObjc */ = {
+			isa = PBXGroup;
+			children = (
+				812BD55D89182A6CB4C250D00350C67A /* NSData+DSCborDecoding.h */,
+				8C92B915FA0DC3FFF9BD8B37E52BD659 /* NSData+DSCborDecoding.m */,
+				03F1BC6EAE51570F4AFC48C34E984030 /* NSObject+DSCborEncoding.h */,
+				51FDE0155F1CC8E2EEB851ABFB3863E2 /* NSObject+DSCborEncoding.m */,
+				E06CF4F7DA83D2CDE7C7E2F7697A46D2 /* Pod */,
+				A699D6B14D61C357E40DB0FFE3E48F7B /* Support Files */,
 			);
 			name = TinyCborObjc;
 			path = ../..;
@@ -312,12 +319,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7CB1CE8F356309B8E32DC2ED036354F /* Headers */ = {
+		C3533D1DEB26E650EC558F72AA0995AD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72D61987507CBDDBB93B34F5D0A32E50 /* NSObject+DSCborEncoding.h in Headers */,
-				6364FDFD6D81979D0ACD24B1E4AA71D1 /* TinyCborObjc-umbrella.h in Headers */,
+				A50DE8CB743A230F700E8A7A8EB359DF /* NSData+DSCborDecoding.h in Headers */,
+				886617B512AACE3AE242FAA56F449C03 /* NSObject+DSCborEncoding.h in Headers */,
+				7D1C76873402285D5222F08793B10102 /* TinyCborObjc-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,8 +364,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5A5ACD5449C748DBCB182C6F144C1E3 /* Build configuration list for PBXNativeTarget "TinyCborObjc" */;
 			buildPhases = (
-				B7CB1CE8F356309B8E32DC2ED036354F /* Headers */,
-				7496237D99BB9535271469B761E5EE09 /* Sources */,
+				C3533D1DEB26E650EC558F72AA0995AD /* Headers */,
+				17990D20FC165EDE356588854E909614 /* Sources */,
 				81CFC4AB84A1E394DBA876E8206CEC39 /* Frameworks */,
 				94D954C8D51FFB70E122D2BBEE8C9DBB /* Resources */,
 			);
@@ -396,14 +404,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -443,12 +450,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7496237D99BB9535271469B761E5EE09 /* Sources */ = {
+		17990D20FC165EDE356588854E909614 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD027FCB8D38ABF60DA1FE17B40C2EFC /* NSObject+DSCborEncoding.m in Sources */,
-				03C1C3ECC08A0AEF1544E75F4D986F77 /* TinyCborObjc-dummy.m in Sources */,
+				94C6778AE10DFAB97FB2B10344E2769E /* NSData+DSCborDecoding.m in Sources */,
+				0F4C94438E36B86C18592DBEFF2729B7 /* NSObject+DSCborEncoding.m in Sources */,
+				B416C07A446D43E09D24424BA1626581 /* TinyCborObjc-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +544,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -586,7 +593,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -631,7 +639,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -694,7 +701,7 @@
 		};
 		6ACBCB9439BABD9B9D4380A113CBF54F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27CC9C422299E0412A3646972DB55412 /* TinyCborObjc.xcconfig */;
+			baseConfigurationReference = C3EB9C95104F876398763E79FC32AB80 /* TinyCborObjc.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -759,7 +766,7 @@
 		};
 		D38156B13F787ABF558D03931F6D57E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27CC9C422299E0412A3646972DB55412 /* TinyCborObjc.xcconfig */;
+			baseConfigurationReference = C3EB9C95104F876398763E79FC32AB80 /* TinyCborObjc.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

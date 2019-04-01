@@ -17,16 +17,9 @@
 
 #import <TinyCborObjc/NSObject+DSCborEncoding.h>
 
+#import "TestsHelpers.h"
+
 @import XCTest;
-
-#define DATABYTES(...) ({ \
-uint8_t buffer[] = {__VA_ARGS__}; \
-NSData *data = [NSData dataWithBytes:buffer length:sizeof(buffer) / sizeof(uint8_t)]; \
-data; \
-})\
-
-#define DSFLOAT(A) [NSNumber numberWithFloat:A]
-#define DSDOUBLE(A) [NSNumber numberWithDouble:A]
 
 @interface DSCborEncodingTests : XCTestCase
 
