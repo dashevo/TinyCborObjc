@@ -21,7 +21,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString * const DSCborEncodingTinyCborErrorDomain = @"DSCborEncodingTinyCborErrorDomain";
+NSString *const DSCborEncodingTinyCborErrorDomain = @"org.dash.tinycbor.encoding-error";
 
 static size_t const DSCborEncodingBufferChunkSize = 1024;
 
@@ -30,11 +30,11 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 - (NSString *)ds_hexStringFromData {
     const uint8_t *buffer = self.bytes;
     NSUInteger length = self.length;
-    NSMutableString *hexString  = [NSMutableString stringWithCapacity:length * 2];
+    NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
     for (NSUInteger i = 0; i < length; ++i) {
         [hexString appendFormat:@"%02lx", (unsigned long)buffer[i]];
     }
-    
+
     return [NSString stringWithString:hexString];
 }
 
@@ -48,13 +48,13 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 
 - (nullable NSData *)ds_cborEncodedObjectError:(NSError *__autoreleasing *)error {
     size_t bufferSize = DSCborEncodingBufferChunkSize;
-    size_t size = sizeof(uint8_t);
-    uint8_t *buffer = calloc(bufferSize / size, size);
-    
+    const size_t elementSize = sizeof(uint8_t);
+    uint8_t *buffer = calloc(bufferSize / elementSize, elementSize);
+
     CborEncoder encoder;
     cbor_encoder_init(&encoder, buffer, bufferSize, 0);
     CborError err = [self ds_encodeObject:self intoBuffer:&buffer bufferSize:bufferSize encoder:&encoder];
-    
+
     NSData *data = nil;
     if (err == CborNoError) {
         size_t actualBufferSize = cbor_encoder_get_buffer_size(&encoder, buffer);
@@ -67,9 +67,9 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                                      userInfo:nil];
         }
     }
-    
+
     free(buffer);
-    
+
     return data;
 }
 
@@ -81,14 +81,14 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                      encoder:(CborEncoder *)encoder {
     if ([object isKindOfClass:NSString.class]) {
         NSString *stringObject = (NSString *)object;
-        return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+        return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
             return cbor_encode_text_stringz(encoder, stringObject.UTF8String);
         }];
     }
     else if ([object isKindOfClass:NSNumber.class]) {
         NSNumber *numberObject = (NSNumber *)object;
         if ([numberObject isKindOfClass:@YES.class]) {
-            return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+            return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                 return cbor_encode_boolean(encoder, numberObject.boolValue);
             }];
         }
@@ -97,13 +97,13 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             switch (numberType) {
                 case kCFNumberSInt8Type:
                 case kCFNumberCharType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.charValue);
                     }];
                 }
                 case kCFNumberSInt16Type:
                 case kCFNumberShortType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.shortValue);
                     }];
                 }
@@ -112,26 +112,26 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                 case kCFNumberLongType:
                 case kCFNumberNSIntegerType:
                 case kCFNumberCFIndexType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.integerValue);
                     }];
                 }
                 case kCFNumberSInt64Type:
                 case kCFNumberLongLongType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.longLongValue);
                     }];
                 }
                 case kCFNumberFloat32Type:
                 case kCFNumberFloatType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_float(encoder, numberObject.floatValue);
                     }];
                 }
                 case kCFNumberFloat64Type:
                 case kCFNumberDoubleType:
                 case kCFNumberCGFloatType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+                    return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
                         return cbor_encode_double(encoder, numberObject.doubleValue);
                     }];
                 }
@@ -139,7 +139,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         }
     }
     else if ([object isKindOfClass:NSNull.class]) {
-        return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError{
+        return [self ds_performSafeEncodingIntoBuffer:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
             return cbor_encode_null(encoder);
         }];
     }
@@ -147,7 +147,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         NSArray *arrayObject = (NSArray *)object;
         CborEncoder container;
         CborError err;
-        
+
         err = cbor_encoder_create_array(encoder, &container, arrayObject.count);
         if (err != CborNoError) {
             return err;
@@ -162,7 +162,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSDictionary.class]) {
         NSDictionary *dictionaryObject = (NSDictionary *)object;
-        
+
         CborEncoder container;
         CborError err;
         err = cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
@@ -170,7 +170,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             return err;
         }
         NSMutableArray *sortedKeys = [dictionaryObject.allKeys mutableCopy];
-        [sortedKeys sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        [sortedKeys sortUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
             NSString *obj1String = (NSString *)obj1;
             NSString *obj2String = (NSString *)obj2;
             NSData *data1 = [obj1String dataUsingEncoding:NSUTF8StringEncoding];
@@ -191,7 +191,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             if (err != CborNoError) {
                 return err;
             }
-            
+
             id value = dictionaryObject[key];
             err = [self ds_encodeObject:value intoBuffer:buffer bufferSize:bufferSize encoder:&container];
             if (err != CborNoError) {
@@ -218,18 +218,18 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             if (newbuffer == NULL) {
                 return err;
             }
-            
+
             // restore state
             *encoder = tmpencoder;
             encoder->data.ptr = newbuffer + (tmpencoder.data.ptr - *buffer);
             encoder->end = newbuffer + bufferSize;
             *buffer = newbuffer;
         }
-        
+
         err = encodingBlock();
-        
+
     } while (err == CborErrorOutOfMemory);
-    
+
     return err;
 }
 

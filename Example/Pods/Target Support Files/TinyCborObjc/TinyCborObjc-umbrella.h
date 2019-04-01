@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "fmemopen.h"
+#import "NSData+DSCborDecoding.h"
 #import "NSObject+DSCborEncoding.h"
 
 FOUNDATION_EXPORT double TinyCborObjcVersionNumber;

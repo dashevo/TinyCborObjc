@@ -19,7 +19,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const DSCborEncodingTinyCborErrorDomain;
+extern NSString *const DSTinyCborEncodingErrorDomain;
 
 @interface NSData (DSCborEncodingHelper)
 
