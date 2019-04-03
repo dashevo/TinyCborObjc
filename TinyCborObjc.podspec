@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TinyCborObjc'
-  s.version          = '0.3.1'
+  s.version          = '0.4.0'
   s.summary          = 'Objective-C wrapper for TinyCbor - Concise Binary Object Representation (CBOR) Library'
 
   s.description      = <<-DESC
@@ -16,6 +16,7 @@ TinyCborObjc allows encoding/decoding Foundation-objects into/from CBOR represen
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'TinyCborObjc/*.{h,m,c}'
+  s.private_header_files = 'TinyCborObjc/cbortojson_nsstring.h'
 
   s.dependency 'tinycbor', '0.5.3-alpha3'
 
