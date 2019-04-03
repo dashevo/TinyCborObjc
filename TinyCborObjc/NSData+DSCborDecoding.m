@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
     const size_t elementSize = sizeof(uint8_t);
 
     uint8_t *inBuffer = (uint8_t *)self.bytes;
-    size_t inBufferLen = sizeof(inBuffer) / elementSize;
+    size_t inBufferLen = self.length;
 
     size_t outBufferLen = outBufferSize / elementSize;
     uint8_t *outBuffer = calloc(outBufferLen, elementSize);
