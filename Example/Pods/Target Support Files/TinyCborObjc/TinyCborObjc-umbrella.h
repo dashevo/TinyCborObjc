@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "fmemopen.h"
 #import "NSData+DSCborDecoding.h"
 #import "NSObject+DSCborEncoding.h"
 

@@ -18,9 +18,8 @@
 #import "NSData+DSCborDecoding.h"
 
 #import <tinycbor/cbor.h>
-#import <tinycbor/cborjson.h>
 
-#import "fmemopen.h"
+#import "cbortojson_nsstring.h"
 
 NSString *const DSTinyCborDecodingErrorDomain = @"org.dash.tinycbor.decoding-error";
 
@@ -28,8 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSData (DSCborDecoding)
 
-- (nullable id)ds_decodeCborWithOutBufferSize:(size_t)outBufferSize
-                                        error:(NSError *_Nullable __autoreleasing *)error {
+- (nullable id)ds_decodeCborError:(NSError *_Nullable __autoreleasing *)error {
     if (self.length == 0) {
         if (error != NULL) {
             *error = [NSError errorWithDomain:DSTinyCborDecodingErrorDomain
@@ -40,27 +38,17 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
 
-    const size_t elementSize = sizeof(uint8_t);
-
     uint8_t *inBuffer = (uint8_t *)self.bytes;
     size_t inBufferLen = self.length;
 
-    size_t outBufferLen = outBufferSize / elementSize;
-    uint8_t *outBuffer = calloc(outBufferLen, elementSize);
-    FILE *file;
-    if (@available(iOS 11.0, *)) {
-        file = fmemopen(outBuffer, outBufferLen, "w");
-    }
-    else {
-        file = fmemopen_compatible(outBuffer, outBufferLen, "w");
-    }
+    NSMutableString *jsonString = [NSMutableString string];
 
     CborParser parser;
     CborValue value;
-    const int flags = CborConvertDefaultFlags;
+    const int flags = 0;
     CborError err = cbor_parser_init(inBuffer, inBufferLen, 0, &parser, &value);
     if (err == CborNoError) {
-        err = cbor_value_to_json_advance(file, &value, flags);
+        err = cbor_value_to_json_advance_nsstring(jsonString, &value, flags);
     }
 
     if (err != CborNoError) {
@@ -70,13 +58,9 @@ NS_ASSUME_NONNULL_BEGIN
                                      userInfo:nil];
         }
 
-        fclose(file);
-
         return nil;
     }
-
-    // convert to NSString first to automatically process null-terminated sequence
-    NSString *jsonString = [NSString stringWithUTF8String:(char *)outBuffer];
+    
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError = nil;
     id parsedData = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -85,8 +69,6 @@ NS_ASSUME_NONNULL_BEGIN
     if (jsonError != nil && error != NULL) {
         *error = jsonError;
     }
-
-    fclose(file);
 
     return parsedData;
 }

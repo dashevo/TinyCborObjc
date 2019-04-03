@@ -26,12 +26,10 @@ extern NSString *const DSTinyCborDecodingErrorDomain;
 /**
  Decode CBOR-data to Foundation object
 
- @param outBufferSize The size of temporary buffer. Feel free to provide more than needed for resulting data.
  @param error If an error occurs, upon return contains an NSError object
  @return Returns a Foundation object from given CBOR data.
  */
-- (nullable id)ds_decodeCborWithOutBufferSize:(size_t)outBufferSize
-                                        error:(NSError *_Nullable __autoreleasing *)error;
+- (nullable id)ds_decodeCborError:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 

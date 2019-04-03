@@ -1,6 +1,6 @@
 {
   "name": "TinyCborObjc",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "summary": "Objective-C wrapper for TinyCbor - Concise Binary Object Representation (CBOR) Library",
   "description": "TinyCborObjc allows encoding/decoding Foundation-objects into/from CBOR representation. Supports NSDictionary, NSArray, NSString, NSNumber and NSNull.",
   "homepage": "https://github.com/dashevo/TinyCborObjc",
@@ -13,13 +13,14 @@
   },
   "source": {
     "git": "https://github.com/dashevo/TinyCborObjc.git",
-    "tag": "0.3.1"
+    "tag": "0.4.0"
   },
   "social_media_url": "https://twitter.com/podkovyr",
   "platforms": {
     "ios": "9.0"
   },
   "source_files": "TinyCborObjc/*.{h,m,c}",
+  "private_header_files": "TinyCborObjc/cbortojson_nsstring.h",
   "dependencies": {
     "tinycbor": [
       "0.5.3-alpha3"

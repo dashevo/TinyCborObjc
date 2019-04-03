@@ -1,6 +1,6 @@
 PODS:
   - tinycbor (0.5.3-alpha3)
-  - TinyCborObjc (0.3.1):
+  - TinyCborObjc (0.4.0):
     - tinycbor (= 0.5.3-alpha3)
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   tinycbor: f3596b9acc8493b19c9e0cc2d0417d9c7aa58daa
-  TinyCborObjc: b258fee77e6807b8d1dc500f491085c9893a8ab6
+  TinyCborObjc: 36e3ce1b66042017f91bafef403353254235a35f
 
 PODFILE CHECKSUM: 7906639d06b25ad7670577bdf80c3239ba2a72a5
 
