@@ -64,13 +64,73 @@ NS_ASSUME_NONNULL_BEGIN
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError = nil;
     id parsedData = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                    options:kNilOptions
+                                                    options:NSJSONReadingMutableContainers
                                                       error:&jsonError];
+    [self convertBase64DataToNSData:parsedData];
     if (jsonError != nil && error != NULL) {
         *error = jsonError;
     }
 
     return parsedData;
+}
+
+#pragma mark - Private
+
+- (void)convertBase64DataToNSData:(id)object {
+    if ([object isKindOfClass:NSMutableArray.class]) {
+        NSMutableArray *mutableArray = (NSMutableArray *)object;
+        for (NSUInteger i = 0; i < mutableArray.count; i++) {
+            id element = mutableArray[i];
+            if ([element isKindOfClass:NSArray.class] ||
+                [element isKindOfClass:NSDictionary.class]) {
+                [self convertBase64DataToNSData:element];
+            }
+            else if ([self shouldConvertObject:element]) {
+                id converted = [self dataFromBase64EncodedStringWithMarker:element];
+                [mutableArray replaceObjectAtIndex:i withObject:converted];
+            }
+        }
+    }
+    else if ([object isKindOfClass:NSMutableDictionary.class]) {
+        NSMutableDictionary *mutableDicitonary = (NSMutableDictionary *)object;
+        for (id key in mutableDicitonary) {
+            id value = mutableDicitonary[key];
+            if ([value isKindOfClass:NSArray.class] ||
+                [value isKindOfClass:NSDictionary.class]) {
+                [self convertBase64DataToNSData:value];
+            }
+            else if ([self shouldConvertObject:value]) {
+                id converted = [self dataFromBase64EncodedStringWithMarker:value];
+                mutableDicitonary[key] = converted;
+            }
+        }
+    }
+}
+
+- (id)dataFromBase64EncodedStringWithMarker:(NSString *)string {
+    NSRange markerRange = [string rangeOfString:DSCborBase64DataMarker];
+    NSAssert(markerRange.location != NSNotFound, @"String is not valid for conversion");
+    if (markerRange.location == NSNotFound) {
+        return string;
+    }
+    NSString *base64String = [string substringFromIndex:markerRange.length];
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:base64String
+                                                       options:kNilOptions];
+    if (!data) {
+        return string;
+    }
+    
+    return data;
+}
+
+- (BOOL)shouldConvertObject:(id)object {
+    if ([object isKindOfClass:NSString.class] &&
+        [object hasPrefix:DSCborBase64DataMarker]) {
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

@@ -13,6 +13,7 @@ Supported types:
 - `NSString`
 - `NSNumber`
 - `NSNull`
+- `NSData`
 
 ## Usage
 
@@ -29,10 +30,8 @@ Decoding
 #import <TinyCborObjc/NSData+DSCborDecoding.h>
 
 NSData *data = ...; // CBOR data
-size_t outBufferSize = 1024; // 1 Kb
 NSError *error = nil;
-id decoded = [data ds_decodeCborWithOutBufferSize:outBufferSize
-                                            error:&error];
+id decoded = [data ds_decodeCborError:&error];
 ```
 
 ## Dependencies
