@@ -42,6 +42,8 @@
 
 #import <Foundation/NSData.h>
 
+NSString * const DSCborBase64DataMarker = @"___DS_CBOR_BASE64___";
+
 /**
  * \defgroup CborToJson Converting CBOR to JSON
  * \brief Group of functions used to convert CBOR to JSON.
@@ -382,7 +384,12 @@ static CborError tagged_value_to_json(NSMutableString *out, CborValue *it, int f
         }
         if (err)
             return err;
-        [out appendFormat:@"\"%s%s\"", pre, str];
+        if (tag == CborExpectedBase64Tag) {
+            [out appendFormat:@"\"%@%s%s\"", DSCborBase64DataMarker, pre, str];
+        }
+        else {
+            [out appendFormat:@"\"%s%s\"", pre, str];
+        }
         err = CborNoError;
         free(str);
         status->flags = TypeWasNotNative | TypeWasTagged | CborByteStringType;
@@ -525,7 +532,12 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
         }
         if (err)
             return err;
-        [out appendFormat:@"\"%s\"", str];
+        if (type == CborByteStringType) {
+            [out appendFormat:@"\"%@%s\"", DSCborBase64DataMarker, str];
+        }
+        else {
+            [out appendFormat:@"\"%s\"", str];
+        }
         err = CborNoError;
         free(str);
         return err;

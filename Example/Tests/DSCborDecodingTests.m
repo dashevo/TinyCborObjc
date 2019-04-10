@@ -60,4 +60,39 @@
     XCTAssertNil(error);
 }
 
+- (void)testDecodingData {
+    NSData *encoded = DATABYTES(0xa1, 0x64, 0x64, 0x61, 0x74, 0x61, 0x43, 0x61, 0x62, 0x63);
+    NSString *dataString = @"abc";
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *d = @{ @"data" : data };
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqualObjects(decoded, d);
+    XCTAssertNil(error);
+}
+
+- (void)testEncodingAndDecodingData {
+    NSString *dataString = @"abc";
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *d = @{ @"d" :
+                             @[
+                                @"str",
+                                @42,
+                                @{
+                                   @"data" : data,
+                                },
+                             ],
+    };
+
+    NSData *encoded = [d ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqualObjects(decoded, d);
+    XCTAssertNil(error);
+}
+
 @end

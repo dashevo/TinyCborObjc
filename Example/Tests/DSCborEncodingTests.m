@@ -122,5 +122,13 @@
     XCTAssert([encoded isEqualToData:DATABYTES(0xa2, 0x61, 0x61, 0x81, 0x01, 0x61, 0x62, 0x82, 0x02, 0x03)]);
 }
 
+- (void)testEncodeDataPayload {
+    NSString *dataString = @"abc";
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *d = @{@"data": data};
+    NSData *encoded = [d ds_cborEncodedObject];
+    XCTAssert([encoded isEqualToData:DATABYTES(0xa1, 0x64, 0x64, 0x61, 0x74, 0x61, 0x43, 0x61, 0x62, 0x63)]);
+}
+
 @end
 
