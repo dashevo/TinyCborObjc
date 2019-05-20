@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
     }
     else if ([object isKindOfClass:NSMutableDictionary.class]) {
         NSMutableDictionary *mutableDicitonary = (NSMutableDictionary *)object;
-        for (id key in mutableDicitonary) {
+        for (id key in mutableDicitonary.allKeys) {
             id value = mutableDicitonary[key];
             if ([value isKindOfClass:NSArray.class] ||
                 [value isKindOfClass:NSDictionary.class]) {
