@@ -524,7 +524,7 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
     case CborTextStringType: {
         char *str;
         if (type == CborByteStringType) {
-            err = dump_bytestring_base64url(&str, it);
+            err = dump_bytestring_base64(&str, it);
             status->flags = TypeWasNotNative;
         } else {
             size_t n = 0;
