@@ -28,6 +28,19 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingADictionaryWithNonAsciiKeys {
+    NSDictionary<NSString *, NSString *> *dict = @{
+                                                   @"£test£": @"¡€#¢•©˙∆åßƒ∫~µç≈Ω"
+                                                   };
+    NSData *encoded = [dict ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+    
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqualObjects(decoded, dict);
+    XCTAssertNil(error);
+}
+
 - (void)testDictionaryDecoding {
     NSData *data = DATABYTES(0xA1, 0x63, 0x61, 0x62, 0x63, 0x18, 0x2A);
     NSError *error = nil;

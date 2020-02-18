@@ -437,7 +437,8 @@ static CborError map_to_json(NSMutableString *out, CborValue *it, int flags, Con
             return err;
 
         /* first, print the key */
-        [out appendFormat:@"\"%s\":", key];
+        NSString *utf8Key = [[NSString alloc] initWithCString:key encoding:NSUTF8StringEncoding];
+        [out appendFormat:@"\"%@\":", utf8Key];
 
         /* then, print the value */
         CborType valueType = cbor_value_get_type(it);
@@ -446,10 +447,10 @@ static CborError map_to_json(NSMutableString *out, CborValue *it, int flags, Con
         /* finally, print any metadata we may have */
         if (flags & CborConvertAddMetadata) {
             if (!err && keyType != CborTextStringType) {
-                [out appendFormat:@",\"%s$keycbordump\":true", key];
+                [out appendFormat:@",\"%@$keycbordump\":true", utf8Key];
             }
             if (!err && status->flags) {
-                [out appendFormat:@",\"%s$cbor\":{", key];
+                [out appendFormat:@",\"%@$cbor\":{", utf8Key];
                 if (add_value_metadata(out, valueType, status) != CborNoError ||
                     putc_to_nsstring('}', out) < 0)
                     err = CborErrorIO;
@@ -533,11 +534,14 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
         }
         if (err)
             return err;
+
+        NSString *utf8Str = [[NSString alloc] initWithCString:str encoding:NSUTF8StringEncoding];
+
         if (type == CborByteStringType) {
-            [out appendFormat:@"\"%@%s\"", DSCborBase64DataMarker, str];
+            [out appendFormat:@"\"%@%@\"", DSCborBase64DataMarker, utf8Str];
         }
         else {
-            [out appendFormat:@"\"%s\"", str];
+            [out appendFormat:@"\"%@\"", utf8Str];
         }
         err = CborNoError;
         free(str);
