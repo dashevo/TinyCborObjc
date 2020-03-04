@@ -1,6 +1,0 @@
-framework module Pods_TinyCborObjc_Tests {
-  umbrella header "Pods-TinyCborObjc_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}
