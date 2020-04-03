@@ -188,7 +188,8 @@
 				3762E8A0240FFBD400D823DC /* cborencoder.c */,
 				3762E8A2240FFBD400D823DC /* cborinternal_p.h */,
 			);
-			path = src;
+			name = src;
+			path = "../tinycbor-pod/tinycbor/src";
 			sourceTree = "<group>";
 		};
 		3762E8B8240FFC9200D823DC /* Frameworks */ = {
