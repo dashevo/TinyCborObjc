@@ -233,7 +233,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                 * DSCborEncodingBufferChunkSize;
             uint8_t *newbuffer = realloc(*buffer, bufferSize);
             if (newbuffer == NULL) {
-                return err; // WARNING: Would cause an infinite loop if this was ever triggered
+                return CborErrorOutOfMemory;
             }
 
             // restore state
