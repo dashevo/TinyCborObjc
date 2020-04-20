@@ -219,22 +219,22 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     CborEncoder tmpencoder = *encoder;
     do {
         if (err == CborErrorOutOfMemory) {
-            bufferSize += DSCborEncodingBufferChunkSize;
+            bufferSize += DSCborEncodingBufferChunkSize; // Why not the following? `(1 + encoder->data.bytes_needed / DSCborEncodingBufferChunkSize) * DSCborEncodingBufferChunkSize;`
             uint8_t *newbuffer = realloc(*buffer, bufferSize);
             if (newbuffer == NULL) {
-                return err;
+                return err; // WARNING: Would cause an infinite loop if this was ever triggered
             }
 
             // restore state
             *encoder = tmpencoder;
-            encoder->data.ptr = newbuffer + (tmpencoder.data.ptr - *buffer);
+            encoder->data.ptr = newbuffer + (tmpencoder.data.ptr - *buffer); // `newbuffer + tmpOffset;` (where `tempOffset = *encoder.data.ptr - *buffer;` is set outside the loop)
             encoder->end = newbuffer + bufferSize;
             *buffer = newbuffer;
         }
 
         err = encodingBlock();
 
-    } while (err == CborErrorOutOfMemory);
+    } while (err == CborErrorOutOfMemory); // WARNING: crude. Requires many reallocs and begins processing from new. Should estimate size first.
 
     return err;
 }
