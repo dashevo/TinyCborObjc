@@ -60,6 +60,18 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingLargeString {
+    NSString *str = [@"" stringByPaddingToLength:50000 withString: @"a" startingAtIndex:0];
+    NSData *encoded = [str ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+    
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqual(((NSString *)decoded).length, 50000);
+    XCTAssertEqualObjects(decoded, str);
+    XCTAssertNil(error);
+}
+
 - (void)testDecodingData {
     NSData *encoded = DATABYTES(0xa1, 0x64, 0x64, 0x61, 0x74, 0x61, 0x43, 0x61, 0x62, 0x63);
     NSString *dataString = @"abc";
