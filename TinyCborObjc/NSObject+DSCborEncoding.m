@@ -216,8 +216,13 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                                       encoder:(CborEncoder *)encoder
                                 encodingBlock:(CborError (^)(void))encodingBlock {
     CborError err = CborNoError;
-    CborEncoder tmpencoder = *encoder;
-    ptrdiff_t tempOffset = tmpencoder.data.ptr - *buffer;
+
+    // Save the state of the encoder and its offset in the buffer so that
+    // in the event of an out-of-memory situation we can grow the buffer,
+    // reset our encoder state and try again with the larger buffer.
+    CborEncoder savedEncoder = *encoder;
+    ptrdiff_t savedOffset = savedEncoder.data.ptr - *buffer;
+
     do {
         if (err == CborErrorOutOfMemory) {
             bufferSize += DSCborEncodingBufferChunkSize; // Why not the following? `(1 + encoder->data.bytes_needed / DSCborEncodingBufferChunkSize) * DSCborEncodingBufferChunkSize;`
@@ -227,8 +232,8 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             }
 
             // restore state
-            *encoder = tmpencoder;
-            encoder->data.ptr = newbuffer + tempOffset;
+            *encoder = savedEncoder;
+            encoder->data.ptr = newbuffer + savedOffset;
             encoder->end = newbuffer + bufferSize;
             *buffer = newbuffer;
         }
