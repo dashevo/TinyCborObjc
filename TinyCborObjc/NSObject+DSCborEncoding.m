@@ -245,7 +245,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 
         err = encodingBlock();
 
-    } while (err == CborErrorOutOfMemory); // WARNING: crude. Requires many reallocs and begins processing from new. Should estimate size first.
+    } while (err == CborErrorOutOfMemory);
 
     return err;
 }
