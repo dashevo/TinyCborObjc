@@ -225,7 +225,12 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 
     do {
         if (err == CborErrorOutOfMemory) {
-            bufferSize += DSCborEncodingBufferChunkSize; // Why not the following? `(1 + encoder->data.bytes_needed / DSCborEncodingBufferChunkSize) * DSCborEncodingBufferChunkSize;`
+            // Grow by enough `DSCborEncodingBufferChunkSize` chunks
+            // to succeed on the next attempt for the current key which
+            // caused the OOM situation. Note that there may still be
+            // subsequent keys which trigger another OOM situation.
+            bufferSize += (1 + encoder->data.bytes_needed / DSCborEncodingBufferChunkSize)
+                * DSCborEncodingBufferChunkSize;
             uint8_t *newbuffer = realloc(*buffer, bufferSize);
             if (newbuffer == NULL) {
                 return err; // WARNING: Would cause an infinite loop if this was ever triggered
