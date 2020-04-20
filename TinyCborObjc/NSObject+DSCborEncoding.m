@@ -220,8 +220,8 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     // Save the state of the encoder and its offset in the buffer so that
     // in the event of an out-of-memory situation we can grow the buffer,
     // reset our encoder state and try again with the larger buffer.
-    CborEncoder savedEncoder = *encoder;
-    ptrdiff_t savedOffset = savedEncoder.data.ptr - *buffer;
+    const CborEncoder savedEncoder = *encoder;
+    const ptrdiff_t savedOffset = savedEncoder.data.ptr - *buffer;
 
     do {
         if (err == CborErrorOutOfMemory) {
