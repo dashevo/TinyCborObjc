@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Lint
+      uses: DoozyX/clang-format-lint-action@v0.5
+      with:
+        exclude: './tinycbor'
+        extensions: 'h,m'
+        clangFormatVersion: 9
+    - name: Test
+      run: xcodebuild
+          -project TinyCborObjc.xcodeproj
+          -scheme TinyCborObjcTests
+          -sdk iphonesimulator
+          test
