@@ -1,6 +1,6 @@
 # TinyCborObjc
 
-[![CI Status](https://img.shields.io/travis/dashevo/TinyCborObjc.svg?style=flat)](https://travis-ci.org/dashevo/TinyCborObjc)
+![CI Status](https://github.com/getditto/TinyCborObjc/workflows/CI/badge.svg?branch=master)
 [![Version](https://img.shields.io/cocoapods/v/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 [![License](https://img.shields.io/cocoapods/l/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 [![Platform](https://img.shields.io/cocoapods/p/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
