@@ -106,4 +106,31 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingRandomData {
+    int numBytes = 64;
+    NSMutableData *data = [NSMutableData dataWithCapacity:numBytes];
+    for(unsigned int i = 0; i < numBytes/4; i++) {
+        uint32_t randomBits = arc4random();
+        [data appendBytes:(void*)&randomBits length:4];
+    }
+
+    NSDictionary *d = @{ @"d" :
+                             @[
+                                @"str",
+                                @42,
+                                @{
+                                   @"data" : data,
+                                },
+                             ],
+    };
+
+    NSData *encoded = [d ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqualObjects(decoded, d);
+    XCTAssertNil(error);
+}
+
 @end
