@@ -19,6 +19,7 @@ jobs:
     - name: Test
       run: xcodebuild
           -project TinyCborObjc.xcodeproj
-          -scheme TinyCborObjcTests
+          -scheme TinyCborObjc
           -sdk iphonesimulator
+          -destination 'platform=iOS Simulator,name=iPhone 11'
           test
