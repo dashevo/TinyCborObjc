@@ -30,10 +30,10 @@
 #  define __STDC_LIMIT_MACROS 1
 #endif
 
-#include "cbor.h"
-#include "cborjson.h"
-#include "cborinternal_p.h"
-#include "compilersupport_p.h"
+#include <tinycbor/cbor.h>
+#include <tinycbor/cborjson.h>
+#include <tinycbor/cborinternal_p.h>
+#include <tinycbor/compilersupport_p.h>
 
 #include <inttypes.h>
 #include <stdio.h>
@@ -41,6 +41,7 @@
 #include <string.h>
 
 #import <Foundation/NSData.h>
+#import <Foundation/NSString.h>
 
 NSString * const DSCborBase64DataMarker = @"___DS_CBOR_BASE64___";
 

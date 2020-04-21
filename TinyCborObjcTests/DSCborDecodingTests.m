@@ -95,4 +95,15 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingASimpleString {
+    NSString *str = @"a";
+    NSData *encoded = [str ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqualObjects(decoded, str);
+    XCTAssertNil(error);
+}
+
 @end
