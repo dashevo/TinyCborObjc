@@ -25,7 +25,8 @@
 #ifndef CBORJSON_H
 #define CBORJSON_H
 
-#import "cbor.h"
+#import <tinycbor/cbor.h>
+
 #import <Foundation/Foundation.h>
 
 #ifdef __cplusplus
