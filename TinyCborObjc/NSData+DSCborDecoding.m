@@ -17,7 +17,7 @@
 
 #import "NSData+DSCborDecoding.h"
 
-#import <tinycbor/cbor.h>
+#import "cbor.h"
 
 #import "cbortojson_nsstring.h"
 

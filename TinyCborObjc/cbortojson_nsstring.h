@@ -25,8 +25,8 @@
 #ifndef CBORJSON_H
 #define CBORJSON_H
 
-#import <tinycbor/cbor.h>
-#import <Foundation/NSData.h>
+#import "cbor.h"
+#import <Foundation/Foundation.h>
 
 #ifdef __cplusplus
 extern "C" {

@@ -17,7 +17,7 @@
 
 #import "NSObject+DSCborEncoding.h"
 
-#import <tinycbor/cbor.h>
+#import "cbor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
