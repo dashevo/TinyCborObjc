@@ -1,9 +1,6 @@
 # TinyCborObjc
 
 ![CI Status](https://github.com/getditto/TinyCborObjc/workflows/CI/badge.svg?branch=master)
-[![Version](https://img.shields.io/cocoapods/v/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
-[![License](https://img.shields.io/cocoapods/l/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
-[![Platform](https://img.shields.io/cocoapods/p/TinyCborObjc.svg?style=flat)](https://cocoapods.org/pods/TinyCborObjc)
 
 TinyCborObjc allows encoding and decoding Foundation-objects into/from CBOR representation.
 
@@ -41,15 +38,6 @@ which is integrated as git submodule.
 
 Run `git submodule update --init` to ensure the [tinycbor](https://github.com/intel/tinycbor)
 dependency is present.
-
-## Installation
-
-TinyCborObjc is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'TinyCborObjc'
-```
 
 ## Author
 
