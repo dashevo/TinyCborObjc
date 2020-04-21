@@ -16,10 +16,9 @@
 //
 
 #import "NSData+DSCborDecoding.h"
+#import "cbortojson_nsstring.h"
 
 #import <tinycbor/cbor.h>
-
-#import "cbortojson_nsstring.h"
 
 NSString *const DSTinyCborDecodingErrorDomain = @"org.dash.tinycbor.decoding-error";
 
