@@ -15,7 +15,7 @@
 //  limitations under the License.
 //
 
-#import <ObjCCBOR/NSObject+DSCborEncoding.h>
+#import <ObjCCBOR/NSObject+ObjCCBOR.h>
 
 #import "TestsHelpers.h"
 

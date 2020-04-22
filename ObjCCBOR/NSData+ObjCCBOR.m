@@ -15,7 +15,7 @@
 //  limitations under the License.
 //
 
-#import "NSData+DSCborDecoding.h"
+#import "NSData+ObjCCBOR.h"
 #import "cbortojson_nsstring.h"
 
 #import <tinycbor/cbor.h>

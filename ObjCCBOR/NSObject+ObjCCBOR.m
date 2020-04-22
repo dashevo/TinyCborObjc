@@ -15,7 +15,7 @@
 //  limitations under the License.
 //
 
-#import "NSObject+DSCborEncoding.h"
+#import "NSObject+ObjCCBOR.h"
 
 #import <tinycbor/cbor.h>
 

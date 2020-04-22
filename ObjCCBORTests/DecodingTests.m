@@ -1,5 +1,5 @@
 //
-//  DSCborDecodingTests.m
+//  DecodingTests.m
 //  ObjCCBOR_Tests
 //
 //  Created by Andrew Podkovyrin on 01/04/2019.
@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import <ObjCCBOR/NSData+DSCborDecoding.h>
-#import <ObjCCBOR/NSObject+DSCborEncoding.h>
+#import <ObjCCBOR/NSData+ObjCCBOR.h>
+#import <ObjCCBOR/NSObject+ObjCCBOR.h>
 
 #import "TestsHelpers.h"
 
