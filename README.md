@@ -47,9 +47,13 @@ it, simply add the following line to your Podfile:
 pod 'TinyCborObjc'
 ```
 
-## Author
+## Authors
 
 Andrew Podkovyrin, podkovyrin@gmail.com
+
+Hamilton Chapman, hamchapman@gmail.com
+
+Connor Power, connor@connorpower.com
 
 ## License
 
