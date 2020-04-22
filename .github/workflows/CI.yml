@@ -15,7 +15,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        recursive: true
+        submodules: recursive
 
     - name: Test
       run: set -o pipefail &&
