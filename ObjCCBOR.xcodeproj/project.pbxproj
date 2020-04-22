@@ -10,7 +10,7 @@
 		3762E830240FF98700D823DC /* ObjCCBOR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3762E826240FF98700D823DC /* ObjCCBOR.framework */; };
 		3762E843240FFAA100D823DC /* EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E840240FFAA100D823DC /* EncodingTests.m */; };
 		3762E844240FFAA100D823DC /* DecodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E841240FFAA100D823DC /* DecodingTests.m */; };
-		3762E84B240FFAAA00D823DC /* NSObject+ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = 3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3762E84B240FFAAA00D823DC /* NSObject+ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = 3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3762E84C240FFAAA00D823DC /* NSObject+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */; };
 		3762E84F240FFAAA00D823DC /* cbortojson_nsstring.h in Headers */ = {isa = PBXBuildFile; fileRef = 3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3762E850240FFAAA00D823DC /* cbortojson_nsstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */; };
@@ -31,9 +31,9 @@
 		3762E8B5240FFBD400D823DC /* cborencoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E8A0240FFBD400D823DC /* cborencoder.c */; };
 		3762E8B7240FFBD400D823DC /* cborinternal_p.h in Headers */ = {isa = PBXBuildFile; fileRef = 3762E8A2240FFBD400D823DC /* cborinternal_p.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3762E8B9240FFC9200D823DC /* tinycbor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3762E856240FFAC500D823DC /* tinycbor.framework */; };
-		D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D26CE64B244FCA9400B8A91A /* NSData+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */; };
-		D26CE64E244FCD3600B8A91A /* ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */; };
+		D26CE64E244FCD3600B8A91A /* ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D26CE650244FCD5300B8A91A /* ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */; };
 /* End PBXBuildFile section */
 
@@ -144,10 +144,6 @@
 				D26CE64C244FCCE700B8A91A /* Private */,
 				D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */,
 				D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */,
-				D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */,
-				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
-				3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */,
-				3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */,
 				3762E82A240FF98700D823DC /* Info.plist */,
 			);
 			path = ObjCCBOR;
@@ -208,6 +204,10 @@
 			children = (
 				3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */,
 				3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */,
+				D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */,
+				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
+				3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */,
+				3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -220,8 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D26CE64E244FCD3600B8A91A /* ObjCCBOR.h in Headers */,
-				D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */,
 				3762E84F240FFAAA00D823DC /* cbortojson_nsstring.h in Headers */,
+				D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */,
 				3762E84B240FFAAA00D823DC /* NSObject+ObjCCBOR.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
