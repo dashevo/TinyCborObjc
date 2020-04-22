@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3762E825240FF98700D823DC"
-               BuildableName = "ObjCCBOR.framework"
+               BlueprintIdentifier = "D26CE68124502F5E00B8A91A"
+               BuildableName = "libObjCCBOR.a"
                BlueprintName = "ObjCCBOR"
                ReferencedContainer = "container:ObjCCBOR.xcodeproj">
             </BuildableReference>
@@ -60,8 +60,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3762E825240FF98700D823DC"
-            BuildableName = "ObjCCBOR.framework"
+            BlueprintIdentifier = "D26CE68124502F5E00B8A91A"
+            BuildableName = "libObjCCBOR.a"
             BlueprintName = "ObjCCBOR"
             ReferencedContainer = "container:ObjCCBOR.xcodeproj">
          </BuildableReference>
