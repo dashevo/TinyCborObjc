@@ -1,6 +1,6 @@
 //
 //  TestsHelpers.h
-//  TinyCborObjc
+//  ObjCCBOR
 //
 //  Created by Andrew Podkovyrin on 01/04/2019.
 //  Copyright © 2019 Andrew Podkovyrin. All rights reserved.

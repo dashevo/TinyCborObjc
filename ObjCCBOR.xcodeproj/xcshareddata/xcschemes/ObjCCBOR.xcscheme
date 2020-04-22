@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3762E825240FF98700D823DC"
-               BuildableName = "TinyCborObjc.framework"
-               BlueprintName = "TinyCborObjc"
-               ReferencedContainer = "container:TinyCborObjc.xcodeproj">
+               BlueprintIdentifier = "D26CE68124502F5E00B8A91A"
+               BuildableName = "libObjCCBOR.a"
+               BlueprintName = "ObjCCBOR"
+               ReferencedContainer = "container:ObjCCBOR.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3762E82E240FF98700D823DC"
-               BuildableName = "TinyCborObjcTests.xctest"
-               BlueprintName = "TinyCborObjcTests"
-               ReferencedContainer = "container:TinyCborObjc.xcodeproj">
+               BuildableName = "ObjCCBORTests.xctest"
+               BlueprintName = "ObjCCBORTests"
+               ReferencedContainer = "container:ObjCCBOR.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -60,10 +60,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3762E825240FF98700D823DC"
-            BuildableName = "TinyCborObjc.framework"
-            BlueprintName = "TinyCborObjc"
-            ReferencedContainer = "container:TinyCborObjc.xcodeproj">
+            BlueprintIdentifier = "D26CE68124502F5E00B8A91A"
+            BuildableName = "libObjCCBOR.a"
+            BlueprintName = "ObjCCBOR"
+            ReferencedContainer = "container:ObjCCBOR.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

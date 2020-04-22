@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3762E843240FFAA100D823DC /* EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E840240FFAA100D823DC /* EncodingTests.m */; };
+		3762E844240FFAA100D823DC /* DecodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E841240FFAA100D823DC /* DecodingTests.m */; };
+		D26CE65E24502C2700B8A91A /* cbortojson.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E890240FFBD400D823DC /* cbortojson.c */; };
+		D26CE65F24502C2700B8A91A /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E893240FFBD400D823DC /* open_memstream.c */; };
+		D26CE66024502C2700B8A91A /* cborvalidation.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E896240FFBD400D823DC /* cborvalidation.c */; };
+		D26CE66124502C2700B8A91A /* cborparser_dup_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E897240FFBD400D823DC /* cborparser_dup_string.c */; };
+		D26CE66224502C2700B8A91A /* cborpretty_stdio.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E898240FFBD400D823DC /* cborpretty_stdio.c */; };
+		D26CE66324502C2700B8A91A /* cborencoder_close_container_checked.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E899240FFBD400D823DC /* cborencoder_close_container_checked.c */; };
+		D26CE66424502C2700B8A91A /* cborpretty.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E89A240FFBD400D823DC /* cborpretty.c */; };
+		D26CE66524502C2700B8A91A /* cborerrorstrings.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E89C240FFBD400D823DC /* cborerrorstrings.c */; };
+		D26CE66624502C2700B8A91A /* cborparser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E89D240FFBD400D823DC /* cborparser.c */; };
+		D26CE66724502C2700B8A91A /* cborencoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E8A0240FFBD400D823DC /* cborencoder.c */; };
+		D26CE66924502C4A00B8A91A /* utf8_p.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E89E240FFBD400D823DC /* utf8_p.h */; };
+		D26CE66A24502C4C00B8A91A /* cborjson.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E89B240FFBD400D823DC /* cborjson.h */; };
+		D26CE66B24502C5000B8A91A /* cbor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E894240FFBD400D823DC /* cbor.h */; };
+		D26CE66C24502C5400B8A91A /* tinycbor-version.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E891240FFBD400D823DC /* tinycbor-version.h */; };
+		D26CE66D24502C5600B8A91A /* compilersupport_p.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E892240FFBD400D823DC /* compilersupport_p.h */; };
+		D26CE67124502D0E00B8A91A /* cborinternal_p.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E8A2240FFBD400D823DC /* cborinternal_p.h */; };
+		D26CE68624502F5E00B8A91A /* ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE68524502F5E00B8A91A /* ObjCCBOR.m */; };
+		D26CE68724502F5E00B8A91A /* ObjCCBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D26CE68424502F5E00B8A91A /* ObjCCBOR.h */; };
+		D26CE68B24502F8300B8A91A /* cbortojson_nsstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */; settings = {COMPILER_FLAGS = "-Wno-ambiguous-macro -Wno-conversion"; }; };
+		D26CE68C24502F8300B8A91A /* NSData+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */; };
+		D26CE68D24502F8300B8A91A /* NSObject+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */; };
+		D26CE68E24502F9C00B8A91A /* libtinycbor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26CE65524502BF300B8A91A /* libtinycbor.a */; };
+		D26CE6932450301A00B8A91A /* libObjCCBOR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26CE68224502F5E00B8A91A /* libObjCCBOR.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D26CE68F24502FA100B8A91A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3762E81D240FF98700D823DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D26CE65424502BF300B8A91A;
+			remoteInfo = tinycbor;
+		};
+		D26CE6912450301500B8A91A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3762E81D240FF98700D823DC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D26CE68124502F5E00B8A91A;
+			remoteInfo = ObjCCBOR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D26CE65324502BF300B8A91A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D26CE66924502C4A00B8A91A /* utf8_p.h in CopyFiles */,
+				D26CE66D24502C5600B8A91A /* compilersupport_p.h in CopyFiles */,
+				D26CE66C24502C5400B8A91A /* tinycbor-version.h in CopyFiles */,
+				D26CE66A24502C4C00B8A91A /* cborjson.h in CopyFiles */,
+				D26CE66B24502C5000B8A91A /* cbor.h in CopyFiles */,
+				D26CE67124502D0E00B8A91A /* cborinternal_p.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D26CE68024502F5E00B8A91A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				D26CE68724502F5E00B8A91A /* ObjCCBOR.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3762E82F240FF98700D823DC /* ObjCCBORTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjCCBORTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3762E836240FF98700D823DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3762E840240FFAA100D823DC /* EncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingTests.m; sourceTree = "<group>"; };
+		3762E841240FFAA100D823DC /* DecodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecodingTests.m; sourceTree = "<group>"; };
+		3762E842240FFAA100D823DC /* TestsHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsHelpers.h; sourceTree = "<group>"; };
+		3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ObjCCBOR.h"; sourceTree = "<group>"; };
+		3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjCCBOR.m"; sourceTree = "<group>"; };
+		3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cbortojson_nsstring.h; sourceTree = "<group>"; };
+		3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cbortojson_nsstring.m; sourceTree = "<group>"; };
+		3762E890240FFBD400D823DC /* cbortojson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cbortojson.c; sourceTree = "<group>"; };
+		3762E891240FFBD400D823DC /* tinycbor-version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tinycbor-version.h"; sourceTree = "<group>"; };
+		3762E892240FFBD400D823DC /* compilersupport_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compilersupport_p.h; sourceTree = "<group>"; };
+		3762E893240FFBD400D823DC /* open_memstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = open_memstream.c; sourceTree = "<group>"; };
+		3762E894240FFBD400D823DC /* cbor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cbor.h; sourceTree = "<group>"; };
+		3762E896240FFBD400D823DC /* cborvalidation.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborvalidation.c; sourceTree = "<group>"; };
+		3762E897240FFBD400D823DC /* cborparser_dup_string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborparser_dup_string.c; sourceTree = "<group>"; };
+		3762E898240FFBD400D823DC /* cborpretty_stdio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborpretty_stdio.c; sourceTree = "<group>"; };
+		3762E899240FFBD400D823DC /* cborencoder_close_container_checked.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborencoder_close_container_checked.c; sourceTree = "<group>"; };
+		3762E89A240FFBD400D823DC /* cborpretty.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborpretty.c; sourceTree = "<group>"; };
+		3762E89B240FFBD400D823DC /* cborjson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cborjson.h; sourceTree = "<group>"; };
+		3762E89C240FFBD400D823DC /* cborerrorstrings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborerrorstrings.c; sourceTree = "<group>"; };
+		3762E89D240FFBD400D823DC /* cborparser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborparser.c; sourceTree = "<group>"; };
+		3762E89E240FFBD400D823DC /* utf8_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8_p.h; sourceTree = "<group>"; };
+		3762E8A0240FFBD400D823DC /* cborencoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborencoder.c; sourceTree = "<group>"; };
+		3762E8A2240FFBD400D823DC /* cborinternal_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cborinternal_p.h; sourceTree = "<group>"; };
+		D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ObjCCBOR.h"; sourceTree = "<group>"; };
+		D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
+		D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCCBOR.h; sourceTree = "<group>"; };
+		D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCCBOR.m; sourceTree = "<group>"; };
+		D26CE65524502BF300B8A91A /* libtinycbor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtinycbor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D26CE68224502F5E00B8A91A /* libObjCCBOR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjCCBOR.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D26CE68424502F5E00B8A91A /* ObjCCBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCCBOR.h; sourceTree = "<group>"; };
+		D26CE68524502F5E00B8A91A /* ObjCCBOR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCCBOR.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3762E82C240FF98700D823DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26CE6932450301A00B8A91A /* libObjCCBOR.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D26CE65224502BF300B8A91A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D26CE67F24502F5E00B8A91A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26CE68E24502F9C00B8A91A /* libtinycbor.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3762E81C240FF98700D823DC = {
+			isa = PBXGroup;
+			children = (
+				3762E828240FF98700D823DC /* ObjCCBOR */,
+				3762E833240FF98700D823DC /* ObjCCBORTests */,
+				3762E857240FFAC500D823DC /* tinycbor */,
+				D26CE68324502F5E00B8A91A /* ObjCCBOR */,
+				3762E827240FF98700D823DC /* Products */,
+				3762E8B8240FFC9200D823DC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3762E827240FF98700D823DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3762E82F240FF98700D823DC /* ObjCCBORTests.xctest */,
+				D26CE65524502BF300B8A91A /* libtinycbor.a */,
+				D26CE68224502F5E00B8A91A /* libObjCCBOR.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3762E828240FF98700D823DC /* ObjCCBOR */ = {
+			isa = PBXGroup;
+			children = (
+				D26CE64C244FCCE700B8A91A /* Private */,
+				D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */,
+				D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */,
+			);
+			path = ObjCCBOR;
+			sourceTree = "<group>";
+		};
+		3762E833240FF98700D823DC /* ObjCCBORTests */ = {
+			isa = PBXGroup;
+			children = (
+				3762E841240FFAA100D823DC /* DecodingTests.m */,
+				3762E840240FFAA100D823DC /* EncodingTests.m */,
+				3762E842240FFAA100D823DC /* TestsHelpers.h */,
+				3762E836240FF98700D823DC /* Info.plist */,
+			);
+			path = ObjCCBORTests;
+			sourceTree = "<group>";
+		};
+		3762E857240FFAC500D823DC /* tinycbor */ = {
+			isa = PBXGroup;
+			children = (
+				3762E88D240FFBD400D823DC /* src */,
+			);
+			path = tinycbor;
+			sourceTree = "<group>";
+		};
+		3762E88D240FFBD400D823DC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3762E890240FFBD400D823DC /* cbortojson.c */,
+				3762E891240FFBD400D823DC /* tinycbor-version.h */,
+				3762E892240FFBD400D823DC /* compilersupport_p.h */,
+				3762E893240FFBD400D823DC /* open_memstream.c */,
+				3762E894240FFBD400D823DC /* cbor.h */,
+				3762E896240FFBD400D823DC /* cborvalidation.c */,
+				3762E897240FFBD400D823DC /* cborparser_dup_string.c */,
+				3762E898240FFBD400D823DC /* cborpretty_stdio.c */,
+				3762E899240FFBD400D823DC /* cborencoder_close_container_checked.c */,
+				3762E89A240FFBD400D823DC /* cborpretty.c */,
+				3762E89B240FFBD400D823DC /* cborjson.h */,
+				3762E89C240FFBD400D823DC /* cborerrorstrings.c */,
+				3762E89D240FFBD400D823DC /* cborparser.c */,
+				3762E89E240FFBD400D823DC /* utf8_p.h */,
+				3762E8A0240FFBD400D823DC /* cborencoder.c */,
+				3762E8A2240FFBD400D823DC /* cborinternal_p.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		3762E8B8240FFC9200D823DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D26CE64C244FCCE700B8A91A /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */,
+				3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */,
+				D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */,
+				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
+				3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */,
+				3762E846240FFAAA00D823DC /* NSObject+ObjCCBOR.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		D26CE68324502F5E00B8A91A /* ObjCCBOR */ = {
+			isa = PBXGroup;
+			children = (
+				D26CE68424502F5E00B8A91A /* ObjCCBOR.h */,
+				D26CE68524502F5E00B8A91A /* ObjCCBOR.m */,
+			);
+			path = ObjCCBOR;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3762E82E240FF98700D823DC /* ObjCCBORTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3762E83D240FF98700D823DC /* Build configuration list for PBXNativeTarget "ObjCCBORTests" */;
+			buildPhases = (
+				3762E82B240FF98700D823DC /* Sources */,
+				3762E82C240FF98700D823DC /* Frameworks */,
+				3762E82D240FF98700D823DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D26CE6922450301500B8A91A /* PBXTargetDependency */,
+			);
+			name = ObjCCBORTests;
+			productName = TinyCborObjcTests;
+			productReference = 3762E82F240FF98700D823DC /* ObjCCBORTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D26CE65424502BF300B8A91A /* tinycbor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D26CE65B24502BF300B8A91A /* Build configuration list for PBXNativeTarget "tinycbor" */;
+			buildPhases = (
+				D26CE65124502BF300B8A91A /* Sources */,
+				D26CE65224502BF300B8A91A /* Frameworks */,
+				D26CE65324502BF300B8A91A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tinycbor;
+			productName = tinycbor;
+			productReference = D26CE65524502BF300B8A91A /* libtinycbor.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D26CE68124502F5E00B8A91A /* ObjCCBOR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D26CE68824502F5E00B8A91A /* Build configuration list for PBXNativeTarget "ObjCCBOR" */;
+			buildPhases = (
+				D26CE67E24502F5E00B8A91A /* Sources */,
+				D26CE67F24502F5E00B8A91A /* Frameworks */,
+				D26CE68024502F5E00B8A91A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D26CE69024502FA100B8A91A /* PBXTargetDependency */,
+			);
+			name = ObjCCBOR;
+			productName = ObjCCBOR;
+			productReference = D26CE68224502F5E00B8A91A /* libObjCCBOR.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3762E81D240FF98700D823DC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Dash;
+				TargetAttributes = {
+					3762E82E240FF98700D823DC = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					D26CE65424502BF300B8A91A = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					D26CE68124502F5E00B8A91A = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 3762E820240FF98700D823DC /* Build configuration list for PBXProject "ObjCCBOR" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3762E81C240FF98700D823DC;
+			productRefGroup = 3762E827240FF98700D823DC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3762E82E240FF98700D823DC /* ObjCCBORTests */,
+				D26CE65424502BF300B8A91A /* tinycbor */,
+				D26CE68124502F5E00B8A91A /* ObjCCBOR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3762E82D240FF98700D823DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3762E82B240FF98700D823DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3762E843240FFAA100D823DC /* EncodingTests.m in Sources */,
+				3762E844240FFAA100D823DC /* DecodingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D26CE65124502BF300B8A91A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26CE66424502C2700B8A91A /* cborpretty.c in Sources */,
+				D26CE65E24502C2700B8A91A /* cbortojson.c in Sources */,
+				D26CE66324502C2700B8A91A /* cborencoder_close_container_checked.c in Sources */,
+				D26CE66124502C2700B8A91A /* cborparser_dup_string.c in Sources */,
+				D26CE66724502C2700B8A91A /* cborencoder.c in Sources */,
+				D26CE65F24502C2700B8A91A /* open_memstream.c in Sources */,
+				D26CE66524502C2700B8A91A /* cborerrorstrings.c in Sources */,
+				D26CE66024502C2700B8A91A /* cborvalidation.c in Sources */,
+				D26CE66624502C2700B8A91A /* cborparser.c in Sources */,
+				D26CE66224502C2700B8A91A /* cborpretty_stdio.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D26CE67E24502F5E00B8A91A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26CE68C24502F8300B8A91A /* NSData+ObjCCBOR.m in Sources */,
+				D26CE68D24502F8300B8A91A /* NSObject+ObjCCBOR.m in Sources */,
+				D26CE68B24502F8300B8A91A /* cbortojson_nsstring.m in Sources */,
+				D26CE68624502F5E00B8A91A /* ObjCCBOR.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D26CE69024502FA100B8A91A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D26CE65424502BF300B8A91A /* tinycbor */;
+			targetProxy = D26CE68F24502FA100B8A91A /* PBXContainerItemProxy */;
+		};
+		D26CE6922450301500B8A91A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D26CE68124502F5E00B8A91A /* ObjCCBOR */;
+			targetProxy = D26CE6912450301500B8A91A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3762E838240FF98700D823DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3762E839240FF98700D823DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3762E83E240FF98700D823DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ObjCCBORTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = live.ditto.ObjCCBORTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvos appletvsimulator";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Debug;
+		};
+		3762E83F240FF98700D823DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ObjCCBORTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = live.ditto.ObjCCBORTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos appletvos appletvsimulator";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+			};
+			name = Release;
+		};
+		D26CE65C24502BF300B8A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				OTHER_CFLAGS = "-Wno-ambiguous-macro";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D26CE65D24502BF300B8A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_UNREACHABLE_CODE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				OTHER_CFLAGS = "-Wno-ambiguous-macro";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D26CE68924502F5E00B8A91A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D26CE68A24502F5E00B8A91A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3762E820240FF98700D823DC /* Build configuration list for PBXProject "ObjCCBOR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3762E838240FF98700D823DC /* Debug */,
+				3762E839240FF98700D823DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3762E83D240FF98700D823DC /* Build configuration list for PBXNativeTarget "ObjCCBORTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3762E83E240FF98700D823DC /* Debug */,
+				3762E83F240FF98700D823DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D26CE65B24502BF300B8A91A /* Build configuration list for PBXNativeTarget "tinycbor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D26CE65C24502BF300B8A91A /* Debug */,
+				D26CE65D24502BF300B8A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D26CE68824502F5E00B8A91A /* Build configuration list for PBXNativeTarget "ObjCCBOR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D26CE68924502F5E00B8A91A /* Debug */,
+				D26CE68A24502F5E00B8A91A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3762E81D240FF98700D823DC /* Project object */;
+}

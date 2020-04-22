@@ -1,8 +1,9 @@
-# TinyCborObjc
+# ObjCCBOR
 
 ![CI Status](https://github.com/getditto/TinyCborObjc/workflows/CI/badge.svg?branch=master)
 
-TinyCborObjc allows encoding and decoding Foundation-objects into/from CBOR representation.
+ObjCCBOR allows encoding and decoding Foundation-objects into/from CBOR
+representation.
 
 Supported types:
 - `NSDictionary`
@@ -15,34 +16,39 @@ Supported types:
 ## Usage
 
 Encoding
+
 ``` objective-c
-#import <TinyCborObjc/NSObject+DSCborEncoding.h>
+#import <ObjCCBOR/ObjCCBOR.h>
 
 NSDictionary *dictionary = ...;
-NSData *cborData = [dictionary ds_cborEncodedObject];
+NSError *error = nil;
+NSData *cborData = [ObjCCBOR encode:dictionary error:&error];
 ```
 
 Decoding
+
 ``` objective-c
-#import <TinyCborObjc/NSData+DSCborDecoding.h>
+#import <ObjCCBOR/ObjCCBOR.h>
 
 NSData *data = ...; // CBOR data
 NSError *error = nil;
-id decoded = [data ds_decodeCborError:&error];
+id decoded = [ObjCCBOR decode:data error:&error];
 ```
 
 ## Dependencies
 
-`TinyCborObjc` is built on top of [tinycbor](https://github.com/intel/tinycbor)
+`ObjCCBOR` is built on top of [tinycbor](https://github.com/intel/tinycbor)
 which is integrated as git submodule.
 
-Run `git submodule update --init` to ensure the [tinycbor](https://github.com/intel/tinycbor)
-dependency is present.
+Run `git submodule update --init` to ensure the
+[tinycbor](https://github.com/intel/tinycbor) dependency is present.
 
-## Author
+## Authors
 
 Andrew Podkovyrin, podkovyrin@gmail.com
+Hamilton Chapman, hamchapman@gmail.com
+Connor Power, connor@connorpower.com
 
 ## License
 
-TinyCborObjc is available under the MIT license. See the LICENSE file for more info.
+ObjCCBOR is available under the MIT license. See the LICENSE file for more info.

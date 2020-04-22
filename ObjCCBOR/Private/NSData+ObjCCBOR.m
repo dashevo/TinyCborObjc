@@ -15,12 +15,12 @@
 //  limitations under the License.
 //
 
-#import "NSData+DSCborDecoding.h"
+#import "NSData+ObjCCBOR.h"
 #import "cbortojson_nsstring.h"
 
 #import <tinycbor/cbor.h>
 
-NSString *const DSTinyCborDecodingErrorDomain = @"org.dash.tinycbor.decoding-error";
+NSString *const ObjCCBORDecodingErrorDomain = @"live.ditto.objccbor.decoding-error";
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable id)ds_decodeCborError:(NSError *_Nullable __autoreleasing *)error {
     if (self.length == 0) {
         if (error != NULL) {
-            *error = [NSError errorWithDomain:DSTinyCborDecodingErrorDomain
+            *error = [NSError errorWithDomain:ObjCCBORDecodingErrorDomain
                                          code:CborErrorUnknownLength
                                      userInfo:nil];
         }
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
     if (err != CborNoError) {
         if (error != NULL) {
-            *error = [NSError errorWithDomain:DSTinyCborDecodingErrorDomain
+            *error = [NSError errorWithDomain:ObjCCBORDecodingErrorDomain
                                          code:err
                                      userInfo:nil];
         }

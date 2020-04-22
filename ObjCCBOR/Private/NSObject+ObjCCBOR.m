@@ -15,13 +15,13 @@
 //  limitations under the License.
 //
 
-#import "NSObject+DSCborEncoding.h"
+#import "NSObject+ObjCCBOR.h"
 
 #import <tinycbor/cbor.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSString *const DSCborEncodingTinyCborErrorDomain = @"org.dash.tinycbor.encoding-error";
+NSString *const ObjCCBOREncodingErrorDomain = @"live.ditto.objccbor.encoding-error";
 
 static size_t const DSCborEncodingBufferChunkSize = 1024;
 
@@ -64,7 +64,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else {
         if (error != NULL) {
-            *error = [NSError errorWithDomain:DSCborEncodingTinyCborErrorDomain
+            *error = [NSError errorWithDomain:ObjCCBOREncodingErrorDomain
                                          code:err
                                      userInfo:nil];
         }
