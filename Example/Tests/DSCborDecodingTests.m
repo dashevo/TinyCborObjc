@@ -60,6 +60,45 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingLargeString {
+    NSString *str = [@"" stringByPaddingToLength:50000 withString: @"a" startingAtIndex:0];
+    NSData *encoded = [str ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+    
+    NSError *error = nil;
+    id decoded = [encoded ds_decodeCborError:&error];
+    XCTAssertEqual(((NSString *)decoded).length, 50000);
+    XCTAssertEqualObjects(decoded, str);
+    XCTAssertNil(error);
+}
+
+- (void)testEncodingAndDecodingLargeObject {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity: 26];
+
+    for (NSUInteger i = 0; i < 26; i++) {
+        NSString *character = [[NSString alloc] initWithFormat:@"%c", (int)('a' + i)];
+        NSString *str = [@"" stringByPaddingToLength:50000 withString: character startingAtIndex:0];
+        dict[character] = str;
+    }
+
+    NSData *encoded = [dict ds_cborEncodedObject];
+    XCTAssertNotNil(encoded);
+
+    NSError *error = nil;
+    NSDictionary *decoded = (NSDictionary *)[encoded ds_decodeCborError:&error];
+    XCTAssertNil(error);
+
+    NSString *aString = (NSString *)decoded[@"a"];
+    NSCharacterSet *notA = [[NSCharacterSet characterSetWithCharactersInString: @"a"] invertedSet];
+    XCTAssertEqual([aString rangeOfCharacterFromSet:notA].location, NSNotFound);
+    XCTAssertEqual(aString.length, 50000);
+
+    NSString *zString = (NSString *)decoded[@"z"];
+    NSCharacterSet *notZ = [[NSCharacterSet characterSetWithCharactersInString: @"z"] invertedSet];
+    XCTAssertEqual([zString rangeOfCharacterFromSet:notZ].location, NSNotFound);
+    XCTAssertEqual(zString.length, 50000);
+}
+
 - (void)testDecodingData {
     NSData *encoded = DATABYTES(0xa1, 0x64, 0x64, 0x61, 0x74, 0x61, 0x43, 0x61, 0x62, 0x63);
     NSString *dataString = @"abc";
