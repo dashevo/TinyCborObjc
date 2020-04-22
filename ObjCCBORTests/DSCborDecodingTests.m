@@ -1,6 +1,6 @@
 //
 //  DSCborDecodingTests.m
-//  TinyCborObjc_Tests
+//  ObjCCBOR_Tests
 //
 //  Created by Andrew Podkovyrin on 01/04/2019.
 //  Copyright © 2019 Andrew Podkovyrin. All rights reserved.
@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import <TinyCborObjc/NSData+DSCborDecoding.h>
-#import <TinyCborObjc/NSObject+DSCborEncoding.h>
+#import <ObjCCBOR/NSData+DSCborDecoding.h>
+#import <ObjCCBOR/NSObject+DSCborEncoding.h>
 
 #import "TestsHelpers.h"
 
