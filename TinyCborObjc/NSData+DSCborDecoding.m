@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError = nil;
     id parsedData = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                    options:NSJSONReadingMutableContainers
+                                                    options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments
                                                       error:&jsonError];
     [self convertBase64DataToNSData:parsedData];
     if (jsonError != nil && error != NULL) {

@@ -1,0 +1,3 @@
+[submodule "tinycbor-pod"]
+	path = tinycbor-pod
+	url = https://github.com/dashevo/tinycbor-pod.git
