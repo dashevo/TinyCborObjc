@@ -18,8 +18,8 @@ jobs:
         submodules: true
     - name: Test
       run: xcodebuild
-          -project TinyCborObjc.xcodeproj
-          -scheme TinyCborObjc
+          -project ObjCCBOR.xcodeproj
+          -scheme ObjCCBOR
           -sdk iphonesimulator
           -destination 'platform=iOS Simulator,name=iPhone 11'
           test
