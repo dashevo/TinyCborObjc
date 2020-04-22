@@ -137,8 +137,7 @@
 		3762E828240FF98700D823DC /* ObjCCBOR */ = {
 			isa = PBXGroup;
 			children = (
-				3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */,
-				3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */,
+				D26CE64C244FCCE700B8A91A /* Private */,
 				D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */,
 				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
 				3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */,
@@ -196,6 +195,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D26CE64C244FCCE700B8A91A /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				3762E849240FFAAA00D823DC /* cbortojson_nsstring.h */,
+				3762E84A240FFAAA00D823DC /* cbortojson_nsstring.m */,
+			);
+			path = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
