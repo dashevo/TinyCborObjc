@@ -33,6 +33,8 @@
 		3762E8B9240FFC9200D823DC /* tinycbor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3762E856240FFAC500D823DC /* tinycbor.framework */; };
 		D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D26CE64B244FCA9400B8A91A /* NSData+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */; };
+		D26CE64E244FCD3600B8A91A /* ObjCCBOR.h in Headers */ = {isa = PBXBuildFile; fileRef = D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */; };
+		D26CE650244FCD5300B8A91A /* ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		3762E96A2410154200D823DC /* Tinycbor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Tinycbor-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ObjCCBOR.h"; sourceTree = "<group>"; };
 		D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
+		D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCCBOR.h; sourceTree = "<group>"; };
+		D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCCBOR.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				D26CE64C244FCCE700B8A91A /* Private */,
+				D26CE64D244FCD3600B8A91A /* ObjCCBOR.h */,
+				D26CE64F244FCD5300B8A91A /* ObjCCBOR.m */,
 				D26CE648244FCA9400B8A91A /* NSData+ObjCCBOR.h */,
 				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
 				3762E845240FFAAA00D823DC /* NSObject+ObjCCBOR.h */,
@@ -213,6 +219,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26CE64E244FCD3600B8A91A /* ObjCCBOR.h in Headers */,
 				D26CE64A244FCA9400B8A91A /* NSData+ObjCCBOR.h in Headers */,
 				3762E84F240FFAAA00D823DC /* cbortojson_nsstring.h in Headers */,
 				3762E84B240FFAAA00D823DC /* NSObject+ObjCCBOR.h in Headers */,
@@ -360,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D26CE64B244FCA9400B8A91A /* NSData+ObjCCBOR.m in Sources */,
+				D26CE650244FCD5300B8A91A /* ObjCCBOR.m in Sources */,
 				3762E850240FFAAA00D823DC /* cbortojson_nsstring.m in Sources */,
 				3762E84C240FFAAA00D823DC /* NSObject+ObjCCBOR.m in Sources */,
 			);
