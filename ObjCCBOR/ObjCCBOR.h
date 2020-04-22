@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ObjCCBOR : NSObject
 
-+ (nullable id)decodeCbor:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error;
-+ (NSData *)encodeCbor:(NSObject *)object error:(NSError * _Nullable __autoreleasing *)error;
++ (nullable id)decode:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error;
++ (NSData *)encode:(NSObject *)object error:(NSError * _Nullable __autoreleasing *)error;
 
 @end
 

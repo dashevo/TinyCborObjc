@@ -12,7 +12,7 @@
 
 @implementation ObjCCBOR
 
-+ (nullable id)decodeCbor:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error {
++ (nullable id)decode:(NSData *)data error:(NSError * _Nullable __autoreleasing *)error {
     NSError *err = nil;
     id decoded = [data ds_decodeCborError:&err];
     if (error && err != nil) {
@@ -21,7 +21,7 @@
     return decoded;
 }
 
-+ (NSData *)encodeCbor:(NSObject *)object error:(NSError * _Nullable __autoreleasing *)error {
++ (NSData *)encode:(NSObject *)object error:(NSError * _Nullable __autoreleasing *)error {
     NSError *err = nil;
     NSData *encoded = [object ds_cborEncodedObjectError:&err];
     if (error && err != nil) {
