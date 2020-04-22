@@ -77,6 +77,28 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 
 #pragma mark Private
 
+/**
+ Recursively encodes an object into a given buffer. If required, the
+ buffer will be expanded.
+
+ @param object The object which will be encoded. It must be one of
+ `NSDictionary`, `NSArray`,`NSString`, `NSNumber`, `NSNull`, `NSData`
+ or their mutable variants. If `object` is an `NSDictionary` or
+ `NSArray` then this function will recurse, encoding each of their entries.
+ @param buffer A pointer to the buffer into which the encoded form
+ of `object` should be written. The buffer may be reallocated and
+ therefore must exist on the heap. Do not pass a stack buffer. If it
+ was neccessary to grow the buffer during the encoding process, the
+ original `buffer` will be `free()`d and `buffer` will be overritten with
+ a pointer to the enlarged buffer.
+ @param bufferSize The number of bytes in `buffer`. If it was neccessary
+ to grow the buffer during the encoding process, then the enlarged `buffer`
+ size will be written to `bufferSize`.
+ @param encoder A pointer to to the tinycbor encoder which will perform
+ the encoding.
+ @returns Returns the result of the encoding operation (which will be
+ `CborNoError` if encoding was successful.
+ */
 - (CborError)ds_encodeObject:(id)object
                   intoBuffer:(uint8_t **)buffer
                   bufferSize:(size_t *)bufferSize
@@ -252,6 +274,28 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
 }
 
+/**
+ Execute an encoding command within a block, repeatedly expanding the
+ buffer and retrying if the initial buffer proved too small.
+
+ @param buffer A pointer to the buffer into which the encoded form
+ of `object` should be written. The buffer may be reallocated and
+ therefore must exist on the heap. Do not pass a stack buffer. If it
+ was neccessary to grow the buffer during the encoding process, the
+ original `buffer` will be `free()`d and `buffer` will be overritten with
+ a pointer to the enlarged buffer.
+ @param bufferSize The number of bytes in `buffer`. If it was neccessary
+ to grow the buffer during the encoding process, then the enlarged `buffer`
+ size will be written to `bufferSize`.
+ @param encoder A pointer to to the tinycbor encoder which will perform
+ the encoding.
+ @param encodingBlock A block to be executed, typically containing a single
+ tinycbor encoding command.
+ @returns Returns the result of the encoding operation (which will be
+ `CborNoError` if encoding was successful. Note that if `CborErrorOutOfMemory`
+ is returned, then the system is out of memory and growing the buffer
+ further will not be successful.
+ */
 - (CborError)ds_performSafeEncodingIntoBuffer:(uint8_t **)buffer
                                    bufferSize:(size_t *)bufferSize
                                       encoder:(CborEncoder *)encoder
