@@ -105,20 +105,20 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                      encoder:(CborEncoder *)encoder {
     if ([object isKindOfClass:NSString.class]) {
         NSString *stringObject = (NSString *)object;
-        return [self ds_performSafeEncodingIntoBuffer:buffer
-                                           bufferSize:bufferSize
-                                              encoder:encoder
-                                        encodingBlock:^CborError {
+        return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                               bufferSize:bufferSize
+                                                  encoder:encoder
+                                            encodingBlock:^CborError {
             return cbor_encode_text_stringz(encoder, stringObject.UTF8String);
         }];
     }
     else if ([object isKindOfClass:NSNumber.class]) {
         NSNumber *numberObject = (NSNumber *)object;
         if ([numberObject isKindOfClass:@YES.class]) {
-            return [self ds_performSafeEncodingIntoBuffer:buffer
-                                               bufferSize:bufferSize
-                                                  encoder:encoder
-                                            encodingBlock:^CborError {
+            return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                   bufferSize:bufferSize
+                                                      encoder:encoder
+                                                encodingBlock:^CborError {
                 return cbor_encode_boolean(encoder, numberObject.boolValue);
             }];
         }
@@ -127,19 +127,19 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             switch (numberType) {
                 case kCFNumberSInt8Type:
                 case kCFNumberCharType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.charValue);
                     }];
                 }
                 case kCFNumberSInt16Type:
                 case kCFNumberShortType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.shortValue);
                     }];
                 }
@@ -148,38 +148,38 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                 case kCFNumberLongType:
                 case kCFNumberNSIntegerType:
                 case kCFNumberCFIndexType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.integerValue);
                     }];
                 }
                 case kCFNumberSInt64Type:
                 case kCFNumberLongLongType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_int(encoder, numberObject.longLongValue);
                     }];
                 }
                 case kCFNumberFloat32Type:
                 case kCFNumberFloatType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_float(encoder, numberObject.floatValue);
                     }];
                 }
                 case kCFNumberFloat64Type:
                 case kCFNumberDoubleType:
                 case kCFNumberCGFloatType: {
-                    return [self ds_performSafeEncodingIntoBuffer:buffer
-                                                       bufferSize:bufferSize
-                                                          encoder:encoder
-                                                    encodingBlock:^CborError {
+                    return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                                           bufferSize:bufferSize
+                                                              encoder:encoder
+                                                        encodingBlock:^CborError {
                         return cbor_encode_double(encoder, numberObject.doubleValue);
                     }];
                 }
@@ -187,10 +187,10 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         }
     }
     else if ([object isKindOfClass:NSNull.class]) {
-        return [self ds_performSafeEncodingIntoBuffer:buffer
-                                           bufferSize:bufferSize
-                                              encoder:encoder
-                                        encodingBlock:^CborError {
+        return [self ds_encodeByExpandingBufferIfRequired:buffer
+                                               bufferSize:bufferSize
+                                                  encoder:encoder
+                                            encodingBlock:^CborError {
             return cbor_encode_null(encoder);
         }];
     }
@@ -262,7 +262,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSData.class]) {
         NSData *dataObject = (NSData *)object;
-        return [self ds_performSafeEncodingIntoBuffer:buffer
+        return [self ds_encodeByExpandingBufferIfRequired:buffer
                                            bufferSize:bufferSize
                                               encoder:encoder
                                         encodingBlock:^CborError {
@@ -296,10 +296,10 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
  is returned, then the system is out of memory and growing the buffer
  further will not be successful.
  */
-- (CborError)ds_performSafeEncodingIntoBuffer:(uint8_t **)buffer
-                                   bufferSize:(size_t *)bufferSize
-                                      encoder:(CborEncoder *)encoder
-                                encodingBlock:(CborError (^)(void))encodingBlock {
+- (CborError)ds_encodeByExpandingBufferIfRequired:(uint8_t **)buffer
+                                       bufferSize:(size_t *)bufferSize
+                                          encoder:(CborEncoder *)encoder
+                                    encodingBlock:(CborError (^)(void))encodingBlock {
     CborError err = CborNoError;
 
     // Save the state of the encoder and its offset in the buffer so that
