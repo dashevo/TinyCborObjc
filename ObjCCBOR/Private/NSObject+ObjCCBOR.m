@@ -15,6 +15,8 @@
 //  limitations under the License.
 //
 
+#import "CBORRepresentable.h"
+
 #import "NSObject+ObjCCBOR.h"
 
 #import <tinycbor/cbor.h>
@@ -53,7 +55,8 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
 
     CborEncoder encoder;
     cbor_encoder_init(&encoder, buffer, bufferSize, 0);
-    CborError err = [self ds_encodeObject:self intoBuffer:&buffer
+    CborError err = [self ds_encodeObject:self
+                               intoBuffer:&buffer
                                bufferSize:&bufferSize
                                   encoder:&encoder];
 
@@ -103,7 +106,13 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                   intoBuffer:(uint8_t **)buffer
                   bufferSize:(size_t *)bufferSize
                      encoder:(CborEncoder *)encoder {
-    if ([object isKindOfClass:NSString.class]) {
+    if ([object conformsToProtocol:@protocol(CBORRepresentable)]) {
+        return [self ds_encodeObject:[(NSObject <CBORRepresentable> *)object CBORRepresentation]
+                          intoBuffer:buffer
+                          bufferSize:bufferSize
+                             encoder:encoder];
+    }
+    else if ([object isKindOfClass:NSString.class]) {
         NSString *stringObject = (NSString *)object;
         return [self ds_encodeByExpandingBufferIfRequired:buffer
                                                bufferSize:bufferSize
@@ -216,9 +225,9 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSDictionary.class]) {
         NSDictionary *dictionaryObject = (NSDictionary *)object;
-
         CborEncoder container;
         CborError err;
+
         err = cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
         if (err != CborNoError) {
             return err;

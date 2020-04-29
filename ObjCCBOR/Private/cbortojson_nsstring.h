@@ -32,7 +32,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
+
 extern NSString * const DSCborBase64DataMarker;
 
 CBOR_API CborError cbor_value_to_json_advance_nsstring(NSMutableString *out, CborValue *value, int flags);
