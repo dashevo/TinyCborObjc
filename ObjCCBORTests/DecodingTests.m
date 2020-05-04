@@ -21,7 +21,7 @@
 - (void)testArrayDecoding {
     NSData *data = DATABYTES(0x82, 0x01, 0x02);
     NSError *error = nil;
-    id decoded = [ObjCCBOR decode:data error:&error];
+    id decoded = [CBOR decodeData:data error:&error];
     id result = @[ @1, @2 ];
     XCTAssertEqualObjects(decoded, result);
     XCTAssertNil(error);
@@ -32,11 +32,11 @@
                                                    @"£test£": @"¡€#¢•©˙∆åßƒ∫~µç≈Ω"
                                                    };
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:dict error:&error];
+    NSData *encoded = [CBOR encodeObject:dict error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, dict);
     XCTAssertNil(error);
 }
@@ -44,7 +44,7 @@
 - (void)testDictionaryDecoding {
     NSData *data = DATABYTES(0xA1, 0x63, 0x61, 0x62, 0x63, 0x18, 0x2A);
     NSError *error = nil;
-    id decoded = [ObjCCBOR decode:data error:&error];
+    id decoded = [CBOR decodeData:data error:&error];
     id result = @{ @"abc" : @42 };
     XCTAssertEqualObjects(decoded, result);
     XCTAssertNil(error);
@@ -53,7 +53,7 @@
 - (void)testEmptyDataDecoding {
     NSData *data = DATABYTES();
     NSError *error = nil;
-    id decoded = [ObjCCBOR decode:data error:&error];
+    id decoded = [CBOR decodeData:data error:&error];
     XCTAssertNil(decoded);
     XCTAssertNotNil(error);
 }
@@ -65,11 +65,11 @@
         @"other type key" : @[ @1, @2 ],
     };
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:json error:&error];
+    NSData *encoded = [CBOR encodeObject:json error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, json);
     XCTAssertNil(error);
 }
@@ -77,11 +77,11 @@
 - (void)testEncodingAndDecodingLargeString {
     NSString *str = [@"" stringByPaddingToLength:50000 withString: @"a" startingAtIndex:0];
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:str error:&error];
+    NSData *encoded = [CBOR encodeObject:str error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqual(((NSString *)decoded).length, 50000);
     XCTAssertEqualObjects(decoded, str);
     XCTAssertNil(error);
@@ -97,11 +97,11 @@
     }
 
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:dict error:&error];
+    NSData *encoded = [CBOR encodeObject:dict error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    NSDictionary *decoded = [ObjCCBOR decode:encoded error:&error];
+    NSDictionary *decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertNil(error);
 
     NSString *aString = (NSString *)decoded[@"a"];
@@ -122,7 +122,7 @@
 
     NSDictionary *d = @{ @"data" : data };
     NSError *error = nil;
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, d);
     XCTAssertNil(error);
 }
@@ -143,11 +143,11 @@
     };
 
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:dict error:&error];
+    NSData *encoded = [CBOR encodeObject:dict error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, dict);
     XCTAssertNil(error);
 }
@@ -155,11 +155,11 @@
 - (void)testEncodingAndDecodingASimpleString {
     NSString *str = @"a";
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:str error:&error];
+    NSData *encoded = [CBOR encodeObject:str error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, str);
     XCTAssertNil(error);
 }
@@ -184,11 +184,11 @@
     };
 
     NSError *error = nil;
-    NSData *encoded = [ObjCCBOR encode:dict error:&error];
+    NSData *encoded = [CBOR encodeObject:dict error:&error];
     XCTAssertNotNil(encoded);
     XCTAssertNil(error);
 
-    id decoded = [ObjCCBOR decode:encoded error:&error];
+    id decoded = [CBOR decodeData:encoded error:&error];
     XCTAssertEqualObjects(decoded, dict);
     XCTAssertNil(error);
 }

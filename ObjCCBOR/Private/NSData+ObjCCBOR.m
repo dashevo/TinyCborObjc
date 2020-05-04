@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 
         return nil;
     }
-    
+
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError = nil;
     id parsedData = [NSJSONSerialization JSONObjectWithData:jsonData
@@ -118,17 +118,17 @@ NS_ASSUME_NONNULL_BEGIN
     if (!data) {
         return string;
     }
-    
+
     return data;
 }
 
 - (BOOL)shouldConvertObject:(id)object {
     if ([object isKindOfClass:NSString.class] &&
         [object hasPrefix:DSCborBase64DataMarker]) {
-        
+
         return YES;
     }
-    
+
     return NO;
 }
 

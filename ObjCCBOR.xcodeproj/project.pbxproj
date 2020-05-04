@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3720B70F245186FB005B9C8D /* NSObject+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3720B709245186FB005B9C8D /* NSObject+ObjCCBOR.m */; };
 		3720B710245186FB005B9C8D /* cbortojson_nsstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3720B70A245186FB005B9C8D /* cbortojson_nsstring.m */; };
+		37388129245ACE4900BADA35 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 37388128245ACE4900BADA35 /* TestHelpers.m */; };
+		37388130245C875C00BADA35 /* ObjCCBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3738812F245C86EB00BADA35 /* ObjCCBOR.h */; };
+		37388133245C898200BADA35 /* CBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D26CE68424502F5E00B8A91A /* CBOR.h */; };
+		37388135245C89E100BADA35 /* CBORRepresentable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37388126245AC82200BADA35 /* CBORRepresentable.h */; };
 		3762E843240FFAA100D823DC /* EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E840240FFAA100D823DC /* EncodingTests.m */; };
 		3762E844240FFAA100D823DC /* DecodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E841240FFAA100D823DC /* DecodingTests.m */; };
 		D26CE65E24502C2700B8A91A /* cbortojson.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E890240FFBD400D823DC /* cbortojson.c */; };
@@ -27,8 +31,7 @@
 		D26CE66C24502C5400B8A91A /* tinycbor-version.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E891240FFBD400D823DC /* tinycbor-version.h */; };
 		D26CE66D24502C5600B8A91A /* compilersupport_p.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E892240FFBD400D823DC /* compilersupport_p.h */; };
 		D26CE67124502D0E00B8A91A /* cborinternal_p.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3762E8A2240FFBD400D823DC /* cborinternal_p.h */; };
-		D26CE68624502F5E00B8A91A /* ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE68524502F5E00B8A91A /* ObjCCBOR.m */; };
-		D26CE68724502F5E00B8A91A /* ObjCCBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D26CE68424502F5E00B8A91A /* ObjCCBOR.h */; };
+		D26CE68624502F5E00B8A91A /* CBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE68524502F5E00B8A91A /* CBOR.m */; };
 		D26CE68C24502F8300B8A91A /* NSData+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */; };
 		D26CE68E24502F9C00B8A91A /* libtinycbor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26CE65524502BF300B8A91A /* libtinycbor.a */; };
 		D26CE6932450301A00B8A91A /* libObjCCBOR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26CE68224502F5E00B8A91A /* libObjCCBOR.a */; };
@@ -73,7 +76,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				D26CE68724502F5E00B8A91A /* ObjCCBOR.h in CopyFiles */,
+				37388135245C89E100BADA35 /* CBORRepresentable.h in CopyFiles */,
+				37388133245C898200BADA35 /* CBOR.h in CopyFiles */,
+				37388130245C875C00BADA35 /* ObjCCBOR.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +87,12 @@
 /* Begin PBXFileReference section */
 		3720B709245186FB005B9C8D /* NSObject+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ObjCCBOR.m"; sourceTree = "<group>"; };
 		3720B70A245186FB005B9C8D /* cbortojson_nsstring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cbortojson_nsstring.m; sourceTree = "<group>"; };
-		3720B70B245186FB005B9C8D /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
 		3720B70C245186FB005B9C8D /* NSObject+ObjCCBOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ObjCCBOR.h"; sourceTree = "<group>"; };
 		3720B70D245186FB005B9C8D /* NSData+ObjCCBOR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ObjCCBOR.h"; sourceTree = "<group>"; };
 		3720B70E245186FB005B9C8D /* cbortojson_nsstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cbortojson_nsstring.h; sourceTree = "<group>"; };
+		37388126245AC82200BADA35 /* CBORRepresentable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBORRepresentable.h; sourceTree = "<group>"; };
+		37388128245ACE4900BADA35 /* TestHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
+		3738812F245C86EB00BADA35 /* ObjCCBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCCBOR.h; sourceTree = "<group>"; };
 		3762E82F240FF98700D823DC /* ObjCCBORTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjCCBORTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3762E836240FF98700D823DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3762E840240FFAA100D823DC /* EncodingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncodingTests.m; sourceTree = "<group>"; };
@@ -110,8 +117,8 @@
 		D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
 		D26CE65524502BF300B8A91A /* libtinycbor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtinycbor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26CE68224502F5E00B8A91A /* libObjCCBOR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjCCBOR.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D26CE68424502F5E00B8A91A /* ObjCCBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCCBOR.h; sourceTree = "<group>"; };
-		D26CE68524502F5E00B8A91A /* ObjCCBOR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCCBOR.m; sourceTree = "<group>"; };
+		D26CE68424502F5E00B8A91A /* CBOR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBOR.h; sourceTree = "<group>"; };
+		D26CE68524502F5E00B8A91A /* CBOR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBOR.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +155,6 @@
 				3720B70A245186FB005B9C8D /* cbortojson_nsstring.m */,
 				3720B70D245186FB005B9C8D /* NSData+ObjCCBOR.h */,
 				D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */,
-				3720B70B245186FB005B9C8D /* NSData+ObjCCBOR.m */,
 				3720B70C245186FB005B9C8D /* NSObject+ObjCCBOR.h */,
 				3720B709245186FB005B9C8D /* NSObject+ObjCCBOR.m */,
 			);
@@ -182,6 +188,7 @@
 				3762E841240FFAA100D823DC /* DecodingTests.m */,
 				3762E840240FFAA100D823DC /* EncodingTests.m */,
 				3762E842240FFAA100D823DC /* TestsHelpers.h */,
+				37388128245ACE4900BADA35 /* TestHelpers.m */,
 				3762E836240FF98700D823DC /* Info.plist */,
 			);
 			path = ObjCCBORTests;
@@ -229,8 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				3720B708245186FB005B9C8D /* Private */,
-				D26CE68424502F5E00B8A91A /* ObjCCBOR.h */,
-				D26CE68524502F5E00B8A91A /* ObjCCBOR.m */,
+				D26CE68424502F5E00B8A91A /* CBOR.h */,
+				D26CE68524502F5E00B8A91A /* CBOR.m */,
+				37388126245AC82200BADA35 /* CBORRepresentable.h */,
+				3738812F245C86EB00BADA35 /* ObjCCBOR.h */,
 			);
 			path = ObjCCBOR;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3762E843240FFAA100D823DC /* EncodingTests.m in Sources */,
+				37388129245ACE4900BADA35 /* TestHelpers.m in Sources */,
 				3762E844240FFAA100D823DC /* DecodingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +385,7 @@
 				D26CE68C24502F8300B8A91A /* NSData+ObjCCBOR.m in Sources */,
 				3720B70F245186FB005B9C8D /* NSObject+ObjCCBOR.m in Sources */,
 				3720B710245186FB005B9C8D /* cbortojson_nsstring.m in Sources */,
-				D26CE68624502F5E00B8A91A /* ObjCCBOR.m in Sources */,
+				D26CE68624502F5E00B8A91A /* CBOR.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -609,6 +620,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

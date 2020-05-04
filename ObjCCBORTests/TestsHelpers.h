@@ -6,6 +6,8 @@
 //  Copyright © 2019 Andrew Podkovyrin. All rights reserved.
 //
 
+#import <ObjCCBOR/CBORRepresentable.h>
+
 #ifndef TestsHelpers_h
 #define TestsHelpers_h
 
@@ -17,5 +19,10 @@ data; \
 
 #define DSFLOAT(A) [NSNumber numberWithFloat:A]
 #define DSDOUBLE(A) [NSNumber numberWithDouble:A]
+
+@interface MyCBORCompatibleObject : NSObject <CBORRepresentable>
+- (instancetype)initWithName:(NSString *)name;
+@property (nonatomic, readonly) NSString *name;
+@end
 
 #endif /* TestsHelpers_h */
