@@ -61,7 +61,11 @@ NS_ASSUME_NONNULL_BEGIN
         return nil;
     }
     
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *plainJsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+    plainJsonString = [plainJsonString stringByReplacingOccurrencesOfString:@"\t" withString:@"\\t"];
+    plainJsonString = [plainJsonString stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"];
+        
+    NSData *jsonData = [plainJsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError = nil;
     id parsedData = [NSJSONSerialization JSONObjectWithData:jsonData
                                                     options:NSJSONReadingMutableContainers | NSJSONReadingAllowFragments

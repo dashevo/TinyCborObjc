@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TinyCborObjc'
-  s.version          = '0.4.5'
+  s.version          = '0.4.6'
   s.summary          = 'Objective-C wrapper for TinyCbor - Concise Binary Object Representation (CBOR) Library'
 
   s.description      = <<-DESC
