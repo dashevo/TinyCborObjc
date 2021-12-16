@@ -30,10 +30,13 @@
 #  define __STDC_LIMIT_MACROS 1
 #endif
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Weverything"
 #include <tinycbor/cbor.h>
 #include <tinycbor/cborjson.h>
 #include <tinycbor/cborinternal_p.h>
 #include <tinycbor/compilersupport_p.h>
+#pragma clang diagnostic pop
 
 #include <inttypes.h>
 #include <stdio.h>
@@ -614,7 +617,10 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
                 status->flags |= TypeWasNotNative;   /* mark this integer number as a double */
             } else {
                 /* this number is definitely not a 64-bit integer */
+                #pragma clang diagnostic push
+                #pragma clang diagnostic ignored "-Wambiguous-macro"
                 [out appendFormat:@"%." DBL_DECIMAL_DIG_STR "g", val];
+                #pragma clang diagnostic pop
                 r = CborErrorIO;
             }
             if (r < 0)
