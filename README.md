@@ -38,10 +38,7 @@ id decoded = [ObjCCBOR decode:data error:&error];
 ## Dependencies
 
 `ObjCCBOR` is built on top of [tinycbor](https://github.com/intel/tinycbor)
-which is integrated as git submodule.
-
-Run `git submodule update --init` to ensure the
-[tinycbor](https://github.com/intel/tinycbor) dependency is present.
+which is integrated as [git subrepo](https://github.com/ingydotnet/git-subrepo).
 
 ## Authors
 
