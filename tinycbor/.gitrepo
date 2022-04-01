@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/intel/tinycbor.git
+	branch = main
+	commit = 02a7efcf6f7d9cc959fc58a145840331519f2218
+	parent = bb42d54d8ed5a90d277f1cc9775aa91a4e125ca6
+	method = merge
+	cmdver = 0.4.3
