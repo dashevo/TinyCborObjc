@@ -170,7 +170,11 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                                                            bufferSize:bufferSize
                                                               encoder:encoder
                                                         encodingBlock:^CborError {
-                        return cbor_encode_int(encoder, numberObject.longLongValue);
+                        if ([numberObject compare:[NSNumber numberWithInt:0]] == NSOrderedAscending) {
+                            return cbor_encode_negative_int(encoder, numberObject.longLongValue);
+                        } else {
+                            return cbor_encode_uint(encoder, numberObject.unsignedLongLongValue);
+                        }
                     }];
                 }
                 case kCFNumberFloat32Type:

@@ -17,6 +17,8 @@
 
 #import <XCTest/XCTest.h>
 
+#import <limits.h>
+
 #import <ObjCCBOR/CBORRepresentable.h>
 #import <ObjCCBOR/ObjCCBOR.h>
 
@@ -48,6 +50,14 @@
                           DATABYTES(0x1a, 0xff, 0xff, 0xff, 0xff));
     XCTAssertEqualObjects([CBOR encodeObject:@1000000000000 error:nil],
                           DATABYTES(0x1b, 0x00, 0x00, 0x00, 0xe8, 0xd4, 0xa5, 0x10, 0x00));
+    XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithUnsignedLong:4294967295] error:nil],
+                          DATABYTES(0x1a, 0xff, 0xff, 0xff, 0xff));
+    XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithLong:-2147483648] error:nil],
+                          DATABYTES(0x3b, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff));
+    XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithUnsignedLongLong:ULLONG_MAX] error:nil],
+                          DATABYTES(0x1b, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff));
+    XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithLongLong:LLONG_MIN] error:nil],
+                          DATABYTES(0x3b, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff));
 }
 
 - (void)testEncodeStrings {
