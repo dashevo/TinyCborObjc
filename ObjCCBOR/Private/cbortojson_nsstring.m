@@ -480,7 +480,7 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
         CborValue recursed;
         err = cbor_value_enter_container(it, &recursed);
         if (err) {
-            it->ptr = recursed.ptr;
+            it->source = recursed.source;
             return err;       /* parse error */
         }
         if (putc_to_nsstring(type == CborArrayType ? '[' : '{', out) < 0)
@@ -490,7 +490,7 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
                   array_to_json(out, &recursed, flags, status) :
                   map_to_json(out, &recursed, flags, status);
         if (err) {
-            it->ptr = recursed.ptr;
+            it->source = recursed.source;
             return err;       /* parse error */
         }
 
