@@ -15,6 +15,7 @@
 		37388135245C89E100BADA35 /* CBORRepresentable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37388126245AC82200BADA35 /* CBORRepresentable.h */; };
 		3762E843240FFAA100D823DC /* EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E840240FFAA100D823DC /* EncodingTests.m */; };
 		3762E844240FFAA100D823DC /* DecodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E841240FFAA100D823DC /* DecodingTests.m */; };
+		37928D6D27FB1B0D008E3332 /* RoundtripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37928D6C27FB1B0D008E3332 /* RoundtripTests.m */; };
 		D26CE65E24502C2700B8A91A /* cbortojson.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E890240FFBD400D823DC /* cbortojson.c */; };
 		D26CE65F24502C2700B8A91A /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E893240FFBD400D823DC /* open_memstream.c */; };
 		D26CE66024502C2700B8A91A /* cborvalidation.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E896240FFBD400D823DC /* cborvalidation.c */; };
@@ -114,6 +115,7 @@
 		3762E89E240FFBD400D823DC /* utf8_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8_p.h; sourceTree = "<group>"; };
 		3762E8A0240FFBD400D823DC /* cborencoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborencoder.c; sourceTree = "<group>"; };
 		3762E8A2240FFBD400D823DC /* cborinternal_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cborinternal_p.h; sourceTree = "<group>"; };
+		37928D6C27FB1B0D008E3332 /* RoundtripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundtripTests.m; sourceTree = "<group>"; };
 		D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
 		D26CE65524502BF300B8A91A /* libtinycbor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtinycbor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26CE68224502F5E00B8A91A /* libObjCCBOR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjCCBOR.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 			children = (
 				3762E841240FFAA100D823DC /* DecodingTests.m */,
 				3762E840240FFAA100D823DC /* EncodingTests.m */,
+				37928D6C27FB1B0D008E3332 /* RoundtripTests.m */,
 				3762E842240FFAA100D823DC /* TestsHelpers.h */,
 				37388128245ACE4900BADA35 /* TestHelpers.m */,
 				3762E836240FF98700D823DC /* Info.plist */,
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3762E843240FFAA100D823DC /* EncodingTests.m in Sources */,
+				37928D6D27FB1B0D008E3332 /* RoundtripTests.m in Sources */,
 				37388129245ACE4900BADA35 /* TestHelpers.m in Sources */,
 				3762E844240FFAA100D823DC /* DecodingTests.m in Sources */,
 			);
