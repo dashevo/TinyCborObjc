@@ -171,7 +171,7 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
                                                               encoder:encoder
                                                         encodingBlock:^CborError {
                         if ([numberObject compare:[NSNumber numberWithInt:0]] == NSOrderedAscending) {
-                            return cbor_encode_negative_int(encoder, numberObject.longLongValue);
+                            return cbor_encode_negative_int(encoder, llabs(numberObject.longLongValue));
                         } else {
                             return cbor_encode_uint(encoder, numberObject.unsignedLongLongValue);
                         }
