@@ -53,7 +53,7 @@
     XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithUnsignedLong:4294967295] error:nil],
                           DATABYTES(0x1a, 0xff, 0xff, 0xff, 0xff));
     XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithLong:-2147483648] error:nil],
-                          DATABYTES(0x3b, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff, 0xff));
+                          DATABYTES(0x3a, 0x7f, 0xff, 0xff, 0xff));
     XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithUnsignedLongLong:ULLONG_MAX] error:nil],
                           DATABYTES(0x1b, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff));
     XCTAssertEqualObjects([CBOR encodeObject:[NSNumber numberWithLongLong:LLONG_MIN] error:nil],
