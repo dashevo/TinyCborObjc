@@ -7,6 +7,6 @@
 	remote = https://github.com/intel/tinycbor.git
 	branch = main
 	commit = 02a7efcf6f7d9cc959fc58a145840331519f2218
-	parent = bb42d54d8ed5a90d277f1cc9775aa91a4e125ca6
+	parent = 47442caeb7e2515760089bf5cf67f62dab28d1b5
 	method = merge
 	cmdver = 0.4.3
