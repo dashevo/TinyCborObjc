@@ -515,14 +515,17 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
             if ((uint64_t)(-num - 1) != val) {
                 status->flags = NumberPrecisionWasLost | NumberWasNegative;
                 status->originalNumber = val;
+                [out appendFormat:@"%lld", -val - 1];
+            } else {
+                [out appendFormat:@"%.0f", num];
             }
+        } else if ((uint64_t)num != val) {
+            status->flags = NumberPrecisionWasLost;
+            status->originalNumber = val;
+            [out appendFormat:@"%llu", val];
         } else {
-            if ((uint64_t)num != val) {
-                status->flags = NumberPrecisionWasLost;
-                status->originalNumber = val;
-            }
+            [out appendFormat:@"%.0f", num];
         }
-        [out appendFormat:@"%.0f", num];
         break;
     }
 
