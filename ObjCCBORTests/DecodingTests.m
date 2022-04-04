@@ -193,4 +193,22 @@
     XCTAssertNil(error);
 }
 
+- (void)testEncodingAndDecodingStringWithEscapedCharacters {
+    NSDictionary *dict = @{
+        @"escaped": @"\"quotes\"",
+        @"more": @"qu\"otes",
+        @"back": @"sla\\sh",
+        @"new": @"li\nne"
+    };
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:dict error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertEqualObjects(decoded, dict);
+    XCTAssertNil(error);
+}
+
 @end

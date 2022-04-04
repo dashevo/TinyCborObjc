@@ -545,7 +545,17 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
             [out appendFormat:@"\"%@%@\"", DSCborBase64DataMarker, utf8Str];
         }
         else {
-            [out appendFormat:@"\"%@\"", utf8Str];
+            // We JSON serialize the string here to ensure that escaped characters remain appropriately
+            // escaped when building up the final JSON string, and that we get leading and trailing quotes for
+            // the string
+            NSError *jsonErr = nil;
+            NSData *jsonDataStr = [NSJSONSerialization dataWithJSONObject:utf8Str options:NSJSONWritingFragmentsAllowed error:&jsonErr];
+            if (jsonErr != nil) {
+                // This error value doesn't perfectly describe the error but it's the closest we've got
+                err = CborErrorJsonNotImplemented;
+            }
+            NSString *escapedUTF8Str = [[NSString alloc] initWithData:jsonDataStr encoding:NSUTF8StringEncoding];
+            [out appendString:escapedUTF8Str];
         }
         err = CborNoError;
         free(str);
