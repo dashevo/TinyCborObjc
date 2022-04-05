@@ -555,7 +555,7 @@ static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, C
             NSData *jsonDataStr = [NSJSONSerialization dataWithJSONObject:utf8Str options:NSJSONWritingFragmentsAllowed error:&jsonErr];
             if (jsonErr != nil) {
                 // This error value doesn't perfectly describe the error but it's the closest we've got
-                err = CborErrorJsonNotImplemented;
+                return CborErrorJsonNotImplemented;
             }
             NSString *escapedUTF8Str = [[NSString alloc] initWithData:jsonDataStr encoding:NSUTF8StringEncoding];
             [out appendString:escapedUTF8Str];
