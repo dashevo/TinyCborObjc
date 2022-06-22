@@ -40,6 +40,27 @@ id decoded = [ObjCCBOR decode:data error:&error];
 `ObjCCBOR` is built on top of [tinycbor](https://github.com/intel/tinycbor)
 which is integrated as [git subrepo](https://github.com/ingydotnet/git-subrepo).
 
+## Embedding
+
+When embedding this CBOR library within a distributed framework (or library),
+there is a risk of running into symbol conflicts if the embedding binary or one
+of its other dependencies also embed this CBOR library. All C symbols can be
+hidden at link time of the final binary by adding `-Wl,-hidden-lObjCCBOR` to
+`OTHER_LDFLAGS`.
+
+However, Objective-C types must be unique per process. Therefore, this library
+adds support for mangling all relevant types by generating a `Mangling.h` header
+that defines macros that will prefix the original symbols with a custom build
+setting `OBJC_CBOR_MANGLING_PREFIX`. This allows the source to use the original
+ObjCCBOR type names, while renaming them behind the scenes at build time.
+
+Typically, your final distribution binary is built by CI via `xcodebuild`, so
+all you have to do is pass a unique mangling prefix like so:
+
+``` command
+xcodebuild build ... OBJC_CBOR_MANGLING_PREFIX=MyPersonalObjCCBORBuild123
+```
+
 ## Authors
 
 Andrew Podkovyrin, podkovyrin@gmail.com

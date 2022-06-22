@@ -26,7 +26,7 @@
 #define CBORJSON_H
 
 #import <tinycbor/cbor.h>
-
+#import <ObjCCBOR/Mangling.h>
 #import <Foundation/Foundation.h>
 
 #ifdef __cplusplus

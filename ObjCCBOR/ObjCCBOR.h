@@ -6,7 +6,8 @@
 //  Copyright © 2020 Dash. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
+#import <ObjCCBOR/Mangling.h>
 #import <ObjCCBOR/CBOR.h>
 #import <ObjCCBOR/CBORRepresentable.h>
+
+#import <Foundation/Foundation.h>
