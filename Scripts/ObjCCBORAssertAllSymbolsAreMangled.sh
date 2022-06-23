@@ -23,6 +23,7 @@ cat "$TARGET_TEMP_DIR/ObjCCBOR-relevant-symbols.txt" \
     | sed 's/_OBJC_CLASS_\$//' \
     | sed 's/_OBJC_METACLASS_\$//' \
     | sed -E 's/^\_//' \
+    | sort \
     | uniq \
     > "$TARGET_TEMP_DIR/ObjCCBOR-relevant-symbol-names.txt" \
     ;
