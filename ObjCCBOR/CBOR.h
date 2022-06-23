@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ditto. All rights reserved.
 //
 
+#import <ObjCCBOR/Mangling.h>
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN

@@ -10,12 +10,13 @@
 		3720B70F245186FB005B9C8D /* NSObject+ObjCCBOR.m in Sources */ = {isa = PBXBuildFile; fileRef = 3720B709245186FB005B9C8D /* NSObject+ObjCCBOR.m */; };
 		3720B710245186FB005B9C8D /* cbortojson_nsstring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3720B70A245186FB005B9C8D /* cbortojson_nsstring.m */; };
 		37388129245ACE4900BADA35 /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 37388128245ACE4900BADA35 /* TestHelpers.m */; };
-		37388130245C875C00BADA35 /* ObjCCBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3738812F245C86EB00BADA35 /* ObjCCBOR.h */; };
-		37388133245C898200BADA35 /* CBOR.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D26CE68424502F5E00B8A91A /* CBOR.h */; };
-		37388135245C89E100BADA35 /* CBORRepresentable.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 37388126245AC82200BADA35 /* CBORRepresentable.h */; };
+		37388130245C875C00BADA35 /* ObjCCBOR.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 3738812F245C86EB00BADA35 /* ObjCCBOR.h */; };
+		37388133245C898200BADA35 /* CBOR.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = D26CE68424502F5E00B8A91A /* CBOR.h */; };
+		37388135245C89E100BADA35 /* CBORRepresentable.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = 37388126245AC82200BADA35 /* CBORRepresentable.h */; };
 		3762E843240FFAA100D823DC /* EncodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E840240FFAA100D823DC /* EncodingTests.m */; };
 		3762E844240FFAA100D823DC /* DecodingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3762E841240FFAA100D823DC /* DecodingTests.m */; };
 		37928D6D27FB1B0D008E3332 /* RoundtripTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 37928D6C27FB1B0D008E3332 /* RoundtripTests.m */; };
+		B30A90EB28607D8000079612 /* Mangling.h in Copy Headers */ = {isa = PBXBuildFile; fileRef = B30A90EA28607D4A00079612 /* Mangling.h */; };
 		D26CE65E24502C2700B8A91A /* cbortojson.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E890240FFBD400D823DC /* cbortojson.c */; };
 		D26CE65F24502C2700B8A91A /* open_memstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E893240FFBD400D823DC /* open_memstream.c */; };
 		D26CE66024502C2700B8A91A /* cborvalidation.c in Sources */ = {isa = PBXBuildFile; fileRef = 3762E896240FFBD400D823DC /* cborvalidation.c */; };
@@ -71,16 +72,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D26CE68024502F5E00B8A91A /* CopyFiles */ = {
+		D26CE68024502F5E00B8A91A /* Copy Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				37388135245C89E100BADA35 /* CBORRepresentable.h in CopyFiles */,
-				37388133245C898200BADA35 /* CBOR.h in CopyFiles */,
-				37388130245C875C00BADA35 /* ObjCCBOR.h in CopyFiles */,
+				B30A90EB28607D8000079612 /* Mangling.h in Copy Headers */,
+				37388135245C89E100BADA35 /* CBORRepresentable.h in Copy Headers */,
+				37388133245C898200BADA35 /* CBOR.h in Copy Headers */,
+				37388130245C875C00BADA35 /* ObjCCBOR.h in Copy Headers */,
 			);
+			name = "Copy Headers";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -116,6 +119,9 @@
 		3762E8A0240FFBD400D823DC /* cborencoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cborencoder.c; sourceTree = "<group>"; };
 		3762E8A2240FFBD400D823DC /* cborinternal_p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cborinternal_p.h; sourceTree = "<group>"; };
 		37928D6C27FB1B0D008E3332 /* RoundtripTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundtripTests.m; sourceTree = "<group>"; };
+		B306879C28620CB200D1D0E2 /* ObjCCBORGenerateManglingHeader.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ObjCCBORGenerateManglingHeader.sh; sourceTree = "<group>"; };
+		B30A90E92860788200079612 /* ObjCCBORAssertAllSymbolsAreMangled.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ObjCCBORAssertAllSymbolsAreMangled.sh; sourceTree = "<group>"; };
+		B30A90EA28607D4A00079612 /* Mangling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mangling.h; sourceTree = "<group>"; };
 		D26CE649244FCA9400B8A91A /* NSData+ObjCCBOR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ObjCCBOR.m"; sourceTree = "<group>"; };
 		D26CE65524502BF300B8A91A /* libtinycbor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtinycbor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26CE68224502F5E00B8A91A /* libObjCCBOR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libObjCCBOR.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,11 +172,12 @@
 		3762E81C240FF98700D823DC = {
 			isa = PBXGroup;
 			children = (
+				3762E8B8240FFC9200D823DC /* Frameworks */,
 				D26CE68324502F5E00B8A91A /* ObjCCBOR */,
 				3762E833240FF98700D823DC /* ObjCCBORTests */,
-				3762E857240FFAC500D823DC /* tinycbor */,
 				3762E827240FF98700D823DC /* Products */,
-				3762E8B8240FFC9200D823DC /* Frameworks */,
+				B30A90E82860788200079612 /* Scripts */,
+				3762E857240FFAC500D823DC /* tinycbor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,14 +242,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B30A90E82860788200079612 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B30A90E92860788200079612 /* ObjCCBORAssertAllSymbolsAreMangled.sh */,
+				B306879C28620CB200D1D0E2 /* ObjCCBORGenerateManglingHeader.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		D26CE68324502F5E00B8A91A /* ObjCCBOR */ = {
 			isa = PBXGroup;
 			children = (
-				3720B708245186FB005B9C8D /* Private */,
 				D26CE68424502F5E00B8A91A /* CBOR.h */,
 				D26CE68524502F5E00B8A91A /* CBOR.m */,
 				37388126245AC82200BADA35 /* CBORRepresentable.h */,
+				B30A90EA28607D4A00079612 /* Mangling.h */,
 				3738812F245C86EB00BADA35 /* ObjCCBOR.h */,
+				3720B708245186FB005B9C8D /* Private */,
 			);
 			path = ObjCCBOR;
 			sourceTree = "<group>";
@@ -289,9 +306,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D26CE68824502F5E00B8A91A /* Build configuration list for PBXNativeTarget "ObjCCBOR" */;
 			buildPhases = (
+				B30688232863086600D1D0E2 /* Generate Mangling Header */,
+				D26CE68024502F5E00B8A91A /* Copy Headers */,
 				D26CE67E24502F5E00B8A91A /* Sources */,
 				D26CE67F24502F5E00B8A91A /* Frameworks */,
-				D26CE68024502F5E00B8A91A /* CopyFiles */,
+				B30A90EC286081CF00079612 /* Assert All Symbols Are Mangled */,
 			);
 			buildRules = (
 			);
@@ -352,6 +371,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B30688232863086600D1D0E2 /* Generate Mangling Header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mangling Header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/ObjCCBOR/Mangling.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Scripts/ObjCCBORGenerateManglingHeader.sh\n";
+		};
+		B30A90EC286081CF00079612 /* Assert All Symbols Are Mangled */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Assert All Symbols Are Mangled";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "Scripts/ObjCCBORAssertAllSymbolsAreMangled.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3762E82B240FF98700D823DC /* Sources */ = {
@@ -444,7 +503,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -467,11 +525,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OBJC_CBOR_MANGLING_HEADER = ObjCCBOR/Mangling.h;
+				OBJC_CBOR_MANGLING_PREFIX = Ditto;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -510,7 +568,6 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -527,11 +584,11 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OBJC_CBOR_MANGLING_HEADER = ObjCCBOR/Mangling.h;
+				OBJC_CBOR_MANGLING_PREFIX = Ditto;
 				SDKROOT = iphoneos;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -631,6 +688,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				GCC_PREFIX_HEADER = "$(OBJC_CBOR_MANGLING_HEADER)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -646,6 +704,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				GCC_PREFIX_HEADER = "$(OBJC_CBOR_MANGLING_HEADER)";
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
