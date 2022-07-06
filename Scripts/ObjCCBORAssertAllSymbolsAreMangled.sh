@@ -12,6 +12,7 @@ nm -gUPA "$BUILT_PRODUCTS_DIR/libtinycbor.a" | cut -d ' ' -f 2 > "$TARGET_TEMP_D
 grep -vf "$TARGET_TEMP_DIR/tinycbor-symbols.txt" "$TARGET_TEMP_DIR/ObjCCBOR-symbols.txt" \
     | grep -v -E "___block_descriptor_" \
     | grep -v -E "___copy_helper_" \
+    | grep -v -E "___covrec_" \
     | grep -v -E "___destroy_helper_" \
     > "$TARGET_TEMP_DIR/ObjCCBOR-relevant-symbols.txt" \
     ;
