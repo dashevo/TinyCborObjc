@@ -6,8 +6,8 @@
 
 set -Euo pipefail
 
-nm -gUPA "$BUILT_PRODUCTS_DIR/libObjCCBOR.a" | cut -d ' ' -f 2 > "$TARGET_TEMP_DIR/ObjCCBOR-symbols.txt"
-nm -gUPA "$BUILT_PRODUCTS_DIR/libtinycbor.a" | cut -d ' ' -f 2 > "$TARGET_TEMP_DIR/tinycbor-symbols.txt"
+nm -gUPA "$BUILT_PRODUCTS_DIR/libObjCCBOR.a" | sed -e "s/.*\://" | cut -d ' ' -f 2 > "$TARGET_TEMP_DIR/ObjCCBOR-symbols.txt"
+nm -gUPA "$BUILT_PRODUCTS_DIR/libtinycbor.a" | sed -e "s/.*\://" | cut -d ' ' -f 2 > "$TARGET_TEMP_DIR/tinycbor-symbols.txt"
 
 grep -vf "$TARGET_TEMP_DIR/tinycbor-symbols.txt" "$TARGET_TEMP_DIR/ObjCCBOR-symbols.txt" \
     | grep -v -E "___block_descriptor_" \
