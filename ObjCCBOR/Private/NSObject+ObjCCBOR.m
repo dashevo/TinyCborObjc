@@ -221,12 +221,14 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         }
 
         for (id item in arrayObject) {
-            err = [self ds_encodeObject:item
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+            @autoreleasepool {
+                err = [self ds_encodeObject:item
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
         }
         return cbor_encoder_close_container(encoder, &container);
@@ -262,21 +264,26 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             return result;
         }];
         for (id key in sortedKeys) {
-            err = [self ds_encodeObject:key
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+            @autoreleasepool {
+                err = [self ds_encodeObject:key
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
 
             id value = dictionaryObject[key];
-            err = [self ds_encodeObject:value
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+
+            @autoreleasepool {
+                err = [self ds_encodeObject:value
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
         }
         return cbor_encoder_close_container(encoder, &container);
@@ -353,7 +360,9 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
         encoder->debugExpandingBufferIfRequiredLevel += 1;
         // </DEBUG>
 
-        err = encodingBlock();
+        @autoreleasepool {
+            err = encodingBlock();
+        }
 
         // <DEBUG>
         encoder->debugExpandingBufferIfRequiredLevel -= 1;
