@@ -229,6 +229,14 @@ struct CborEncoder
     uint8_t *end;
     size_t remaining;
     int flags;
+
+    // <DEBUG>
+    // This allows us to determine deep in decoding descend whether
+    // the buffer is going to be expanded if we run out of memory. With this
+    // we can identify the code paths where we run out of memory but the
+    // buffer wn't be expanded.
+    int debugExpandingBufferIfRequiredLevel;
+    // </DEBUG>
 };
 typedef struct CborEncoder CborEncoder;
 

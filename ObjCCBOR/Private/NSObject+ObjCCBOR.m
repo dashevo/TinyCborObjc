@@ -341,7 +341,15 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             *buffer = newbuffer;
         }
 
+        // <DEBUG>
+        encoder->debugExpandingBufferIfRequiredLevel += 1;
+        // </DEBUG>
+
         err = encodingBlock();
+
+        // <DEBUG>
+        encoder->debugExpandingBufferIfRequiredLevel -= 1;
+        // </DEBUG>
 
     } while (err == CborErrorOutOfMemory);
 
