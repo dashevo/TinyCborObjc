@@ -209,13 +209,17 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSArray.class]) {
         NSArray *arrayObject = (NSArray *)object;
-        CborEncoder container;
+        __block CborEncoder container;
         CborError err;
 
-        err = cbor_encoder_create_array(encoder, &container, arrayObject.count);
+        err = [self ds_encodeByExpandingBufferIfRequired:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
+            return cbor_encoder_create_array(encoder, &container, arrayObject.count);
+        }];
+
         if (err != CborNoError) {
             return err;
         }
+
         for (id item in arrayObject) {
             err = [self ds_encodeObject:item
                              intoBuffer:buffer
@@ -229,13 +233,17 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSDictionary.class]) {
         NSDictionary *dictionaryObject = (NSDictionary *)object;
-        CborEncoder container;
+        __block CborEncoder container;
         CborError err;
 
-        err = cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
+        err = [self ds_encodeByExpandingBufferIfRequired:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
+            return cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
+        }];
+
         if (err != CborNoError) {
             return err;
         }
+
         NSMutableArray *sortedKeys = [dictionaryObject.allKeys mutableCopy];
         [sortedKeys sortUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
             NSString *obj1String = (NSString *)obj1;
