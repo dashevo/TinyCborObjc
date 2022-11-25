@@ -206,10 +206,6 @@ void cbor_encoder_init(CborEncoder *encoder, uint8_t *buffer, size_t size, int f
     encoder->end = buffer + size;
     encoder->remaining = 2;
     encoder->flags = flags;
-
-    // <DEBUG>
-    encoder->debugExpandingBufferIfRequiredLevel = 0;
-    // </DEBUG>
 }
 
 void cbor_encoder_init_writer(CborEncoder *encoder, CborEncoderWriteFunction writer, void *token)
@@ -257,18 +253,11 @@ static inline void put64(void *where, uint64_t v)
     memcpy(where, &v_be, sizeof(v_be));
 }
 
-static bool would_overflow(CborEncoder *encoder, size_t len)
+static inline bool would_overflow(CborEncoder *encoder, size_t len)
 {
     ptrdiff_t remaining = (ptrdiff_t)encoder->end;
     remaining -= remaining ? (ptrdiff_t)encoder->data.ptr : encoder->data.bytes_needed;
     remaining -= (ptrdiff_t)len;
-
-    // <DEBUG>
-    if (remaining < 0 && encoder->debugExpandingBufferIfRequiredLevel == 0) {
-        printf("💚 [DEBUG] We just hit a condition where the buffer would overflow but we are not wrapped by expand-if-needed.");
-    }
-    // </DEBUG>
-
     return unlikely(remaining < 0);
 }
 
