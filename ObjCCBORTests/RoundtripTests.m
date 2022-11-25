@@ -201,4 +201,73 @@
     XCTAssertNil(error);
 }
 
+- (void)testLargeNestedDictionaries {
+    NSInteger numberOfEntries = 100;
+    NSMutableDictionary *level1 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+    for (int i = 0; i < numberOfEntries; i++) {
+        NSMutableDictionary *level2 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+        for (int j = 0; j < numberOfEntries; j += 1) {
+            NSMutableDictionary *level3 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+            for (int k = 0; k < numberOfEntries; k += 1) {
+                NSString *key = [NSString stringWithFormat:@"key-k%@", @(k)];
+                NSString *value = [NSString stringWithFormat:@"value-k%@", @(k)];
+                level3[key] = value;
+            }
+
+            NSString *key = [NSString stringWithFormat:@"key-j%@", @(j)];
+            NSString *value = [level3 copy];
+            level2[key] = value;
+        }
+
+        NSString *key = [NSString stringWithFormat:@"key-i%@", @(i)];
+        NSString *value = [level2 copy];
+        level1[key] = value;
+    }
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:level1 error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertEqualObjects(decoded, level1);
+    XCTAssertNil(error);
+}
+
+- (void)testLargeNestedArrays {
+    NSInteger numberOfEntries = 100;
+    NSMutableArray *level1 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+    for (int i = 0; i < numberOfEntries; i++) {
+        NSMutableArray *level2 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+        for (int j = 0; j < numberOfEntries; j += 1) {
+            NSMutableArray *level3 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+            for (int k = 0; k < numberOfEntries; k += 1) {
+                NSString *entry = [NSString stringWithFormat:@"entry-%@", @(k)];
+                [level3 addObject:entry];
+            }
+
+            NSArray *entry = [level3 copy];
+            [level2 addObject:entry];
+        }
+
+        NSArray *entry = [level2 copy];
+        [level1 addObject:entry];
+    }
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:level1 error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertEqualObjects(decoded, level1);
+    XCTAssertNil(error);
+}
+
 @end
