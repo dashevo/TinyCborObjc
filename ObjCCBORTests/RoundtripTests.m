@@ -201,4 +201,116 @@
     XCTAssertNil(error);
 }
 
+- (void)testLargeNestedDictionaries {
+    NSInteger numberOfEntries = 100;
+    NSMutableDictionary *level1 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+    for (int i = 0; i < numberOfEntries; i++) {
+        NSMutableDictionary *level2 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+        for (int j = 0; j < numberOfEntries; j += 1) {
+            NSMutableDictionary *level3 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
+
+            for (int k = 0; k < numberOfEntries; k += 1) {
+                NSString *key = [NSString stringWithFormat:@"key-k%@", @(k)];
+                NSString *value = [NSString stringWithFormat:@"value-k%@", @(k)];
+                level3[key] = value;
+            }
+
+            NSString *key = [NSString stringWithFormat:@"key-j%@", @(j)];
+            NSString *value = [level3 copy];
+            level2[key] = value;
+        }
+
+        NSString *key = [NSString stringWithFormat:@"key-i%@", @(i)];
+        NSString *value = [level2 copy];
+        level1[key] = value;
+    }
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:level1 error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertNotNil(decoded);
+    XCTAssertTrue([decoded isKindOfClass:NSDictionary.class]);
+    XCTAssertNil(error);
+
+    NSDictionary *decodedLevel1 = decoded;
+    XCTAssertEqual(decodedLevel1.count, numberOfEntries);
+
+    for (int i = 0; i < decodedLevel1.count; i++) {
+        NSString *key = [NSString stringWithFormat:@"key-i%@", @(i)];
+        NSDictionary *decodedLevel2 = level1[key];
+        XCTAssertEqual(decodedLevel2.count, numberOfEntries);
+
+        for (int j = 0; j < decodedLevel2.count; j++) {
+            NSString *key = [NSString stringWithFormat:@"key-j%@", @(j)];
+            NSDictionary *decodedLevel3 = decodedLevel2[key];
+            XCTAssertEqual(decodedLevel3.count, numberOfEntries);
+
+            for (int k = 0; k < decodedLevel3.count; k++) {
+                NSString *key = [NSString stringWithFormat:@"key-k%@", @(k)];
+                NSString *value = decodedLevel3[key];
+                NSString *expectedValue = [NSString stringWithFormat:@"value-k%@", @(k)];
+                XCTAssertEqualObjects(value, expectedValue);
+            }
+        }
+    }
+}
+
+- (void)testLargeNestedArrays {
+    NSInteger numberOfEntries = 100;
+    NSMutableArray *level1 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+    for (int i = 0; i < numberOfEntries; i++) {
+        NSMutableArray *level2 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+        for (int j = 0; j < numberOfEntries; j += 1) {
+            NSMutableArray *level3 = [[NSMutableArray alloc] initWithCapacity:numberOfEntries];
+
+            for (int k = 0; k < numberOfEntries; k += 1) {
+                NSString *entry = [NSString stringWithFormat:@"entry-%@", @(k)];
+                [level3 addObject:entry];
+            }
+
+            NSArray *entry = [level3 copy];
+            [level2 addObject:entry];
+        }
+
+        NSArray *entry = [level2 copy];
+        [level1 addObject:entry];
+    }
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:level1 error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertNotNil(decoded);
+    XCTAssertTrue([decoded isKindOfClass:NSArray.class]);
+    XCTAssertNil(error);
+
+    NSArray *decodedLevel1 = decoded;
+    XCTAssertEqual(decodedLevel1.count, numberOfEntries);
+
+    for (int i = 0; i < decodedLevel1.count; i++) {
+        NSArray *decodedLevel2 = level1[i];
+        XCTAssertEqual(decodedLevel2.count, numberOfEntries);
+
+        for (int j = 0; j < decodedLevel2.count; j++) {
+            NSArray *decodedLevel3 = decodedLevel2[j];
+            XCTAssertEqual(decodedLevel3.count, numberOfEntries);
+
+            for (int k = 0; k < decodedLevel3.count; k++) {
+                NSString *entry = decodedLevel3[k];
+                NSString *expectedEntry = [NSString stringWithFormat:@"entry-%@", @(k)];
+                XCTAssertEqualObjects(entry, expectedEntry);
+            }
+        }
+    }
+}
+
 @end

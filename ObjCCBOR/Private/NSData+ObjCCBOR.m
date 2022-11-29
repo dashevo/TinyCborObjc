@@ -79,28 +79,32 @@ NS_ASSUME_NONNULL_BEGIN
     if ([object isKindOfClass:NSMutableArray.class]) {
         NSMutableArray *mutableArray = (NSMutableArray *)object;
         for (NSUInteger i = 0; i < mutableArray.count; i++) {
-            id element = mutableArray[i];
-            if ([element isKindOfClass:NSArray.class] ||
-                [element isKindOfClass:NSDictionary.class]) {
-                [self convertBase64DataToNSData:element];
-            }
-            else if ([self shouldConvertObject:element]) {
-                id converted = [self dataFromBase64EncodedStringWithMarker:element];
-                [mutableArray replaceObjectAtIndex:i withObject:converted];
+            @autoreleasepool {
+                id element = mutableArray[i];
+                if ([element isKindOfClass:NSArray.class] ||
+                    [element isKindOfClass:NSDictionary.class]) {
+                    [self convertBase64DataToNSData:element];
+                }
+                else if ([self shouldConvertObject:element]) {
+                    id converted = [self dataFromBase64EncodedStringWithMarker:element];
+                    [mutableArray replaceObjectAtIndex:i withObject:converted];
+                }
             }
         }
     }
     else if ([object isKindOfClass:NSMutableDictionary.class]) {
         NSMutableDictionary *mutableDicitonary = (NSMutableDictionary *)object;
         for (id key in mutableDicitonary.allKeys) {
-            id value = mutableDicitonary[key];
-            if ([value isKindOfClass:NSArray.class] ||
-                [value isKindOfClass:NSDictionary.class]) {
-                [self convertBase64DataToNSData:value];
-            }
-            else if ([self shouldConvertObject:value]) {
-                id converted = [self dataFromBase64EncodedStringWithMarker:value];
-                mutableDicitonary[key] = converted;
+            @autoreleasepool {
+                id value = mutableDicitonary[key];
+                if ([value isKindOfClass:NSArray.class] ||
+                    [value isKindOfClass:NSDictionary.class]) {
+                    [self convertBase64DataToNSData:value];
+                }
+                else if ([self shouldConvertObject:value]) {
+                    id converted = [self dataFromBase64EncodedStringWithMarker:value];
+                    mutableDicitonary[key] = converted;
+                }
             }
         }
     }

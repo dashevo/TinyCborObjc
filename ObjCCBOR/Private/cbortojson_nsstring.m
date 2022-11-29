@@ -470,195 +470,197 @@ static CborError map_to_json(NSMutableString *out, CborValue *it, int flags, Con
 
 static CborError value_to_json(NSMutableString *out, CborValue *it, int flags, CborType type, ConversionStatus *status)
 {
-    CborError err;
-    status->flags = 0;
+    @autoreleasepool {
+        CborError err;
+        status->flags = 0;
 
-    switch (type) {
-    case CborArrayType:
-    case CborMapType: {
-        /* recursive type */
-        CborValue recursed;
-        err = cbor_value_enter_container(it, &recursed);
-        if (err) {
-            it->source = recursed.source;
-            return err;       /* parse error */
-        }
-        if (putc_to_nsstring(type == CborArrayType ? '[' : '{', out) < 0)
-            return CborErrorIO;
+        switch (type) {
+            case CborArrayType:
+            case CborMapType: {
+                /* recursive type */
+                CborValue recursed;
+                err = cbor_value_enter_container(it, &recursed);
+                if (err) {
+                    it->source = recursed.source;
+                    return err;       /* parse error */
+                }
+                if (putc_to_nsstring(type == CborArrayType ? '[' : '{', out) < 0)
+                    return CborErrorIO;
 
-        err = (type == CborArrayType) ?
-                  array_to_json(out, &recursed, flags, status) :
-                  map_to_json(out, &recursed, flags, status);
-        if (err) {
-            it->source = recursed.source;
-            return err;       /* parse error */
-        }
+                err = (type == CborArrayType) ?
+                array_to_json(out, &recursed, flags, status) :
+                map_to_json(out, &recursed, flags, status);
+                if (err) {
+                    it->source = recursed.source;
+                    return err;       /* parse error */
+                }
 
-        if (putc_to_nsstring(type == CborArrayType ? ']' : '}', out) < 0)
-            return CborErrorIO;
-        err = cbor_value_leave_container(it, &recursed);
-        if (err)
-            return err;       /* parse error */
+                if (putc_to_nsstring(type == CborArrayType ? ']' : '}', out) < 0)
+                    return CborErrorIO;
+                err = cbor_value_leave_container(it, &recursed);
+                if (err)
+                    return err;       /* parse error */
 
-        status->flags = 0;    /* reset, there are never conversion errors for us */
-        return CborNoError;
-    }
-
-    case CborIntegerType: {
-        double num;     /* JS numbers are IEEE double precision */
-        uint64_t val;
-        cbor_value_get_raw_integer(it, &val);    /* can't fail */
-        num = (double)val;
-
-        if (cbor_value_is_negative_integer(it)) {
-            num = -num - 1;                     /* convert to negative */
-            if ((uint64_t)(-num - 1) != val) {
-                status->flags = NumberPrecisionWasLost | NumberWasNegative;
-                status->originalNumber = val;
-                [out appendFormat:@"%lld", -val - 1];
-            } else {
-                [out appendFormat:@"%.0f", num];
+                status->flags = 0;    /* reset, there are never conversion errors for us */
+                return CborNoError;
             }
-        } else if ((uint64_t)num != val) {
-            status->flags = NumberPrecisionWasLost;
-            status->originalNumber = val;
-            [out appendFormat:@"%llu", val];
-        } else {
-            [out appendFormat:@"%.0f", num];
-        }
-        break;
-    }
 
-    case CborByteStringType:
-    case CborTextStringType: {
-        char *str;
-        if (type == CborByteStringType) {
-            err = dump_bytestring_base64(&str, it);
-            status->flags = TypeWasNotNative;
-        } else {
-            size_t n = 0;
-            err = cbor_value_dup_text_string(it, &str, &n, it);
-        }
-        if (err)
-            return err;
+            case CborIntegerType: {
+                double num;     /* JS numbers are IEEE double precision */
+                uint64_t val;
+                cbor_value_get_raw_integer(it, &val);    /* can't fail */
+                num = (double)val;
 
-        NSString *utf8Str = [[NSString alloc] initWithCString:str encoding:NSUTF8StringEncoding];
-
-        if (type == CborByteStringType) {
-            [out appendFormat:@"\"%@%@\"", DSCborBase64DataMarker, utf8Str];
-        }
-        else {
-            // We JSON serialize the string here to ensure that escaped characters remain appropriately
-            // escaped when building up the final JSON string, and that we get leading and trailing quotes for
-            // the string
-            NSError *jsonErr = nil;
-            NSData *jsonDataStr = [NSJSONSerialization dataWithJSONObject:utf8Str options:NSJSONWritingFragmentsAllowed error:&jsonErr];
-            if (jsonErr != nil) {
-                // This error value doesn't perfectly describe the error but it's the closest we've got
-                return CborErrorJsonNotImplemented;
+                if (cbor_value_is_negative_integer(it)) {
+                    num = -num - 1;                     /* convert to negative */
+                    if ((uint64_t)(-num - 1) != val) {
+                        status->flags = NumberPrecisionWasLost | NumberWasNegative;
+                        status->originalNumber = val;
+                        [out appendFormat:@"%lld", -val - 1];
+                    } else {
+                        [out appendFormat:@"%.0f", num];
+                    }
+                } else if ((uint64_t)num != val) {
+                    status->flags = NumberPrecisionWasLost;
+                    status->originalNumber = val;
+                    [out appendFormat:@"%llu", val];
+                } else {
+                    [out appendFormat:@"%.0f", num];
+                }
+                break;
             }
-            NSString *escapedUTF8Str = [[NSString alloc] initWithData:jsonDataStr encoding:NSUTF8StringEncoding];
-            [out appendString:escapedUTF8Str];
-        }
-        err = CborNoError;
-        free(str);
-        return err;
-    }
 
-    case CborTagType:
-        return tagged_value_to_json(out, it, flags, status);
+            case CborByteStringType:
+            case CborTextStringType: {
+                char *str;
+                if (type == CborByteStringType) {
+                    err = dump_bytestring_base64(&str, it);
+                    status->flags = TypeWasNotNative;
+                } else {
+                    size_t n = 0;
+                    err = cbor_value_dup_text_string(it, &str, &n, it);
+                }
+                if (err)
+                    return err;
 
-    case CborSimpleType: {
-        uint8_t simple_type;
-        cbor_value_get_simple_type(it, &simple_type);  /* can't fail */
-        status->flags = TypeWasNotNative;
-        status->originalNumber = simple_type;
-        [out appendFormat:@"\"simple(%" PRIu8 ")\"", simple_type];
-        break;
-    }
+                NSString *utf8Str = [[NSString alloc] initWithCString:str encoding:NSUTF8StringEncoding];
 
-    case CborNullType:
-        [out appendString:@"null"];
-        break;
+                if (type == CborByteStringType) {
+                    [out appendFormat:@"\"%@%@\"", DSCborBase64DataMarker, utf8Str];
+                }
+                else {
+                    // We JSON serialize the string here to ensure that escaped characters remain appropriately
+                    // escaped when building up the final JSON string, and that we get leading and trailing quotes for
+                    // the string
+                    NSError *jsonErr = nil;
+                    NSData *jsonDataStr = [NSJSONSerialization dataWithJSONObject:utf8Str options:NSJSONWritingFragmentsAllowed error:&jsonErr];
+                    if (jsonErr != nil) {
+                        // This error value doesn't perfectly describe the error but it's the closest we've got
+                        return CborErrorJsonNotImplemented;
+                    }
+                    NSString *escapedUTF8Str = [[NSString alloc] initWithData:jsonDataStr encoding:NSUTF8StringEncoding];
+                    [out appendString:escapedUTF8Str];
+                }
+                err = CborNoError;
+                free(str);
+                return err;
+            }
 
-    case CborUndefinedType:
-        status->flags = TypeWasNotNative;
-        [out appendString:@"\"undefined\""];
-        break;
+            case CborTagType:
+                return tagged_value_to_json(out, it, flags, status);
 
-    case CborBooleanType: {
-        bool val;
-        cbor_value_get_boolean(it, &val);       /* can't fail */
-        [out appendString:val ? @"true" : @"false"];
-        break;
-    }
+            case CborSimpleType: {
+                uint8_t simple_type;
+                cbor_value_get_simple_type(it, &simple_type);  /* can't fail */
+                status->flags = TypeWasNotNative;
+                status->originalNumber = simple_type;
+                [out appendFormat:@"\"simple(%" PRIu8 ")\"", simple_type];
+                break;
+            }
+
+            case CborNullType:
+                [out appendString:@"null"];
+                break;
+
+            case CborUndefinedType:
+                status->flags = TypeWasNotNative;
+                [out appendString:@"\"undefined\""];
+                break;
+
+            case CborBooleanType: {
+                bool val;
+                cbor_value_get_boolean(it, &val);       /* can't fail */
+                [out appendString:val ? @"true" : @"false"];
+                break;
+            }
 
 #ifndef CBOR_NO_FLOATING_POINT
-    case CborDoubleType: {
-        double val;
-        if (/* DISABLES CODE */ (false)) {
-            float f;
-    case CborFloatType:
-            status->flags = TypeWasNotNative;
-            cbor_value_get_float(it, &f);
-            val = f;
-        } else if (/* DISABLES CODE */ (false)) {
-            uint16_t f16;
-    case CborHalfFloatType:
+            case CborDoubleType: {
+                double val;
+                if (/* DISABLES CODE */ (false)) {
+                    float f;
+                case CborFloatType:
+                    status->flags = TypeWasNotNative;
+                    cbor_value_get_float(it, &f);
+                    val = f;
+                } else if (/* DISABLES CODE */ (false)) {
+                    uint16_t f16;
+                case CborHalfFloatType:
 #  ifndef CBOR_NO_HALF_FLOAT_TYPE
-            status->flags = TypeWasNotNative;
-            cbor_value_get_half_float(it, &f16);
-            val = decode_half(f16);
+                    status->flags = TypeWasNotNative;
+                    cbor_value_get_half_float(it, &f16);
+                    val = decode_half(f16);
 #  else
-            (void)f16;
-            err = CborErrorUnsupportedType;
-            break;
+                    (void)f16;
+                    err = CborErrorUnsupportedType;
+                    break;
 #  endif
-        } else {
-            cbor_value_get_double(it, &val);
-        }
+                } else {
+                    cbor_value_get_double(it, &val);
+                }
 
-        int r = fpclassify(val);
-        if (r == FP_NAN || r == FP_INFINITE) {
-            [out appendString:@"null"];
-            status->flags |= r == FP_NAN ? NumberWasNaN :
-                                           NumberWasInfinite | (val < 0 ? NumberWasNegative : 0);
-        } else {
-            uint64_t ival = (uint64_t)fabs(val);
-            if ((double)ival == fabs(val)) {
-                /* print as integer so we get the full precision */
-                [out appendFormat:@"%s%" PRIu64, val < 0 ? "-" : "", ival];
-                r = CborErrorIO;
-                status->flags |= TypeWasNotNative;   /* mark this integer number as a double */
-            } else {
-                /* this number is definitely not a 64-bit integer */
+                int r = fpclassify(val);
+                if (r == FP_NAN || r == FP_INFINITE) {
+                    [out appendString:@"null"];
+                    status->flags |= r == FP_NAN ? NumberWasNaN :
+                    NumberWasInfinite | (val < 0 ? NumberWasNegative : 0);
+                } else {
+                    uint64_t ival = (uint64_t)fabs(val);
+                    if ((double)ival == fabs(val)) {
+                        /* print as integer so we get the full precision */
+                        [out appendFormat:@"%s%" PRIu64, val < 0 ? "-" : "", ival];
+                        r = CborErrorIO;
+                        status->flags |= TypeWasNotNative;   /* mark this integer number as a double */
+                    } else {
+                        /* this number is definitely not a 64-bit integer */
 
-                // HACK: quick and dirty workaround to avoid
-                // "ambiguous macro" build warning.
-                #pragma clang diagnostic push
-                #pragma clang diagnostic ignored "-Wambiguous-macro"
-                [out appendFormat:@"%." DBL_DECIMAL_DIG_STR "g", val];
-                #pragma clang diagnostic pop
-                r = CborErrorIO;
+                        // HACK: quick and dirty workaround to avoid
+                        // "ambiguous macro" build warning.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wambiguous-macro"
+                        [out appendFormat:@"%." DBL_DECIMAL_DIG_STR "g", val];
+#pragma clang diagnostic pop
+                        r = CborErrorIO;
+                    }
+                    if (r < 0)
+                        return CborErrorIO;
+                }
+                break;
             }
-            if (r < 0)
-                return CborErrorIO;
-        }
-        break;
-    }
 #else
-    case CborDoubleType:
-    case CborFloatType:
-    case CborHalfFloatType:
-        err = CborErrorUnsupportedType;
-        break;
+            case CborDoubleType:
+            case CborFloatType:
+            case CborHalfFloatType:
+                err = CborErrorUnsupportedType;
+                break;
 #endif /* !CBOR_NO_FLOATING_POINT */
 
-    case CborInvalidType:
-        return CborErrorUnknownType;
-    }
+            case CborInvalidType:
+                return CborErrorUnknownType;
+        }
 
-    return cbor_value_advance_fixed(it);
+        return cbor_value_advance_fixed(it);
+    }
 }
 
 /**

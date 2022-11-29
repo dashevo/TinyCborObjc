@@ -209,33 +209,43 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
     }
     else if ([object isKindOfClass:NSArray.class]) {
         NSArray *arrayObject = (NSArray *)object;
-        CborEncoder container;
+        __block CborEncoder container;
         CborError err;
 
-        err = cbor_encoder_create_array(encoder, &container, arrayObject.count);
+        err = [self ds_encodeByExpandingBufferIfRequired:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
+            return cbor_encoder_create_array(encoder, &container, arrayObject.count);
+        }];
+
         if (err != CborNoError) {
             return err;
         }
+
         for (id item in arrayObject) {
-            err = [self ds_encodeObject:item
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+            @autoreleasepool {
+                err = [self ds_encodeObject:item
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
         }
         return cbor_encoder_close_container(encoder, &container);
     }
     else if ([object isKindOfClass:NSDictionary.class]) {
         NSDictionary *dictionaryObject = (NSDictionary *)object;
-        CborEncoder container;
+        __block CborEncoder container;
         CborError err;
 
-        err = cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
+        err = [self ds_encodeByExpandingBufferIfRequired:buffer bufferSize:bufferSize encoder:encoder encodingBlock:^CborError {
+            return cbor_encoder_create_map(encoder, &container, dictionaryObject.count);
+        }];
+
         if (err != CborNoError) {
             return err;
         }
+
         NSMutableArray *sortedKeys = [dictionaryObject.allKeys mutableCopy];
         [sortedKeys sortUsingComparator:^NSComparisonResult(id _Nonnull obj1, id _Nonnull obj2) {
             NSString *obj1String = (NSString *)obj1;
@@ -254,21 +264,26 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             return result;
         }];
         for (id key in sortedKeys) {
-            err = [self ds_encodeObject:key
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+            @autoreleasepool {
+                err = [self ds_encodeObject:key
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
 
             id value = dictionaryObject[key];
-            err = [self ds_encodeObject:value
-                             intoBuffer:buffer
-                             bufferSize:bufferSize
-                                encoder:&container];
-            if (err != CborNoError) {
-                return err;
+
+            @autoreleasepool {
+                err = [self ds_encodeObject:value
+                                 intoBuffer:buffer
+                                 bufferSize:bufferSize
+                                    encoder:&container];
+                if (err != CborNoError) {
+                    return err;
+                }
             }
         }
         return cbor_encoder_close_container(encoder, &container);
@@ -327,8 +342,8 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             // to succeed on the next attempt for the current key which
             // caused the OOM situation. Note that there may still be
             // subsequent keys which trigger another OOM situation.
-            *bufferSize += (1 + encoder->data.bytes_needed / DSCborEncodingBufferChunkSize)
-                * DSCborEncodingBufferChunkSize;
+            size_t bytesNeeded = encoder->end == NULL ? encoder->data.bytes_needed : 0;
+            *bufferSize += (1 + bytesNeeded / DSCborEncodingBufferChunkSize) * DSCborEncodingBufferChunkSize;
             uint8_t *newbuffer = realloc(*buffer, *bufferSize);
             if (newbuffer == NULL) {
                 return CborErrorOutOfMemory;
@@ -341,7 +356,9 @@ static size_t const DSCborEncodingBufferChunkSize = 1024;
             *buffer = newbuffer;
         }
 
-        err = encodingBlock();
+        @autoreleasepool {
+            err = encodingBlock();
+        }
 
     } while (err == CborErrorOutOfMemory);
 
