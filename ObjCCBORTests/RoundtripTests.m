@@ -201,6 +201,20 @@
     XCTAssertNil(error);
 }
 
+- (void)testRoundtripDataAtRoot {
+    NSString *dataString = @"abc";
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSError *error = nil;
+    NSData *encoded = [CBOR encodeObject:data error:&error];
+    XCTAssertNotNil(encoded);
+    XCTAssertNil(error);
+
+    id decoded = [CBOR decodeData:encoded error:&error];
+    XCTAssertEqualObjects(decoded, data);
+    XCTAssertNil(error);
+}
+
 - (void)testLargeNestedDictionaries {
     NSInteger numberOfEntries = 100;
     NSMutableDictionary *level1 = [[NSMutableDictionary alloc] initWithCapacity:numberOfEntries];
